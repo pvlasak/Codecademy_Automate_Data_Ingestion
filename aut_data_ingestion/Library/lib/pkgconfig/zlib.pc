@@ -1,0 +1,13 @@
+prefix=C:/GitHub/Codecademy_Automate_Data_Ingestion/aut_data_ingestion/Library
+exec_prefix=C:/GitHub/Codecademy_Automate_Data_Ingestion/aut_data_ingestion/Library
+libdir=C:/GitHub/Codecademy_Automate_Data_Ingestion/aut_data_ingestion/Library/lib
+sharedlibdir=C:/GitHub/Codecademy_Automate_Data_Ingestion/aut_data_ingestion/Library/lib
+includedir=C:/GitHub/Codecademy_Automate_Data_Ingestion/aut_data_ingestion/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
