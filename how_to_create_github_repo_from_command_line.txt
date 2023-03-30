@@ -1,0 +1,12 @@
+1. navigate to project folder with cd command
+2. create a classic token in Settings - Developer Settings - Personal access tokens - Tokens (classic)
+3. save the token into a file
+4. authenticate via: gh auth login --with-token < mytoken.txt
+5. git init -b main
+6. gh repo create <project-name>
+7. git push --set-upstream <link to git hub repo> main
+
+8. git add
+9. git commit -m 'text'
+10. git push
+ 
