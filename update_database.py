@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import logging
 
 
 def df_students_updates(df):
