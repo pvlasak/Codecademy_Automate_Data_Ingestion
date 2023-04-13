@@ -6,10 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="eb0c8868-40fe-4225-98ff-1c964de588cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Automate_Data_Ingestion-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Automate_Data_Ingestion-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Automate_Data_Ingestion.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Automate_Data_Ingestion.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automated_data_ingestion.py" beforeDir="false" afterPath="$PROJECT_DIR$/automated_data_ingestion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects.py" beforeDir="false" afterPath="$PROJECT_DIR$/objects.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriber-pipeline-starter-kit/dev/cademycode_clean.db" beforeDir="false" afterPath="$PROJECT_DIR$/subscriber-pipeline-starter-kit/dev/cademycode_clean.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/subscriber-pipeline-starter-kit/dev/cademycode_updated.db" beforeDir="false" afterPath="$PROJECT_DIR$/subscriber-pipeline-starter-kit/dev/cademycode_updated.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriber-pipeline-starter-kit/dev/combined_file.csv" beforeDir="false" afterPath="$PROJECT_DIR$/subscriber-pipeline-starter-kit/dev/combined_file.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unit_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/unit_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/update_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/update_database.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +45,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -117,5 +122,29 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/unit_tests.py</url>
+          <line>145</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/automated_data_ingestion.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/unit_tests.py</url>
+          <line>90</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

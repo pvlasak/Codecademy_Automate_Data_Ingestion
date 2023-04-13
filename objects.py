@@ -1,23 +1,15 @@
 import sqlite3
 import pandas as pd
-import json
+import logging
+import os
 
-orig_db_path = "./subscriber-pipeline-starter-kit/dev/cademycode.db"
-new_db_path = "./subscriber-pipeline-starter-kit/dev/cademycode_updated.db"
-db_folder = "./subscriber-pipeline-starter-kit/dev/"
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+formatter1 = logging.Formatter("[%(asctime)s] {%(levelname)s} %(name)s: #%(lineno)d - %(message)s")
 
-
-class SQLite:
-    def __init__(self, file):
-        self.file = file
-
-    def __enter__(self):
-        self.conn = sqlite3.connect(self.file)
-        return self.conn.cursor()
-
-    def __exit__(self, *exc):
-        self.conn.commit()
-        self.conn.close()
+file_handler = logging.FileHandler("changes.log")
+file_handler.setFormatter(formatter1)
+logger.addHandler(file_handler)
 
 
 class Database:
@@ -66,6 +58,13 @@ class Database:
         self.con.commit()
         self.con.close()
 
+    def check_path(self):
+        logger.log(logging.DEBUG, f'Checking if {self.name} database file exists...')
+        if os.path.isfile(self.path) is True:
+            return self.name, True
+        else:
+            return self.name, False
+
 
 class Dataframe:
     def __init__(self, table_name, conn):
@@ -85,23 +84,32 @@ class DataTransfer(Database, Dataframe):
         self.cursor = self.db.get_cursor()
         self.df_dict_down = {}
         self.df_dict_up = None
+        logger.info("Establishing data transfer pipeline between database and dataframe...")
 
-    def download_all_from_sql(self):
+    def download_from_sql(self):
+        logger.info(f"Downloading tables from SQL Database: {self.db.path}...")
         self.table_names = self.db.get_tables()
-        self.new_table_names = self.db.get_new_tables()
         for table in self.table_names:
             df = Dataframe(table, self.connection)
             self.df_dict_down[table] = df.get_data()
-        return self.df_dict_down, self.new_table_names
+        return self.df_dict_down
+
+    def get_new_table_names(self):
+        logger.info("Setting up new table names..")
+        self.new_table_names = self.db.get_new_tables()
+        return self.new_table_names
 
     def upload_to_sql(self, table_name, column_data, df_dict_up):
         self.table_name = table_name
         self.column_data = column_data
         self.df_dict_up = df_dict_up
         self.db.set_table(self.table_name, self.column_data)
+        logger.info(f"Uploading table {self.table_name} to SQL Database: {self.db.path}..")
         df = df_dict_up[self.table_name]
         df.to_sql(self.table_name, self.connection, if_exists='replace', index=False)
 
     def commit_and_close(self):
         self.connection.commit()
         self.connection.close()
+        logger.info(f"Closing connection to database {self.db.path}.")
+
