@@ -1,0 +1,2 @@
+[2023-04-14 14:27:57,853] {ERROR} unit_testing_errors: #183 - New database does not exist yet. Creating a new file.
+[2023-04-14 14:27:57,854] {WARNING} unit_testing_errors: #139 - New database is probably empty and no data are available.

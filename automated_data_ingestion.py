@@ -1,6 +1,7 @@
 from update_database import *
-from unit_tests import *
+from check_functions import *
 from objects import *
+import unittest
 import logging
 import sys
 
@@ -13,31 +14,49 @@ logger.setLevel(logging.DEBUG)
 stream_handler = logging.StreamHandler(sys.stdout)
 logger.addHandler(stream_handler)
 
-if __name__ == '__main__':
-    orig_db_path_check = Database("original", orig_db_path).check_path()
-    log_check_db_path(orig_db_path_check)
-    orig_db_info = check_db(orig_db_path)
-    new_db_path_check = Database("new", new_db_path).check_path()
-    log_check_db_path(new_db_path_check)
-    new_db_info = check_db(new_db_path)
-    new_students, removed_students = check_students(orig_db_info, new_db_info)
-    download_pipeline = DataTransfer("original", orig_db_path)
-    orig_dataframes = download_pipeline.download_from_sql()
-    new_table_names = download_pipeline.get_new_table_names()
-    new_df_gen = df_generator(new_table_names, orig_dataframes)
-    new_dataframes = {new_table_names[i]: next(new_df_gen) for i in range(len(new_table_names))}
-    upload_pipeline = DataTransfer("new", new_db_path)
-    column_data = [df_students_new_cols, df_courses_new_cols, df_student_jobs_new_cols]
-    for i in range(len(new_dataframes)):
-        upload_pipeline.upload_to_sql(new_table_names[i], column_data[i], new_dataframes)
-    download_pipeline.commit_and_close()
-    upload_pipeline.commit_and_close()
 
-    upd_download = DataTransfer("new", new_db_path)
-    updated_dataframes = upd_download.download_from_sql()
-    join_dfs_and_export(updated_dataframes)
-    upd_download.commit_and_close()
-    new_db_after_update = check_db(new_db_path)
+def check_path_and_load_data(label, path_db):
+    db_path_check = Database(label, path_db).check_path()
+    log_check_db_path(db_path_check)
+    db_info = check_db(path_db)
+    return db_info
+
+
+def download_db(db_label, path):
+    pipeline = DataTransfer(db_label, path)
+    dfs = pipeline.download_from_sql()
+    new_tb_names = pipeline.get_new_table_names()
+    pipeline.commit_and_close()
+    return dfs, new_tb_names
+
+
+def update_data(dfs, new_tb_names):
+    new_df_gn = df_generator(new_tb_names, dfs)
+    new_dfs = {new_tb_names[i]: next(new_df_gn) for i in range(len(new_tb_names))}
+    return new_dfs
+
+
+def upload_to_db(target_db_label, db_path, df_to_upload, table_names_to_upload):
+    pipeline = DataTransfer(target_db_label, db_path)
+    col_data = [df_students_new_cols, df_courses_new_cols, df_student_jobs_new_cols]
+    for i in range(len(df_to_upload)):
+        pipeline.upload_to_sql(table_names_to_upload[i], col_data[i], df_to_upload)
+    pipeline.commit_and_close()
+
+
+if __name__ == '__main__':
+    orig_db_info = check_path_and_load_data("original", orig_db_path)
+    new_db_info = check_path_and_load_data("new", new_db_path)
+    new_students, removed_students = check_students(orig_db_info, new_db_info)
+    print(removed_students)
+    orig_dataframes, new_table_names = download_db("original", orig_db_path)
+    new_dataframes = update_data(orig_dataframes, new_table_names)
+    upload_to_db("new", new_db_path, new_dataframes, new_table_names)
+
+    updated_dataframes, _ = download_db("new", new_db_path)
+    df_merged = join_dfs(updated_dataframes)
+    export_df(df_merged)
+    db_info_after_update = check_path_and_load_data("new", new_db_path)
 
 
     class DatabaseTestsClass(unittest.TestCase):
@@ -49,12 +68,12 @@ if __name__ == '__main__':
         def test_db_length(self):
             logger.debug('Testing database length after update...')
             message = 'Original and updated database have not same number of rows.'
-            self.assertTrue(compare_db_length(orig_db_info, new_db_after_update), message)
+            self.assertTrue(compare_db_length(orig_db_info, db_info_after_update), message)
 
         def test_db_row_sequence(self):
             logger.debug('Testing database row sequence after update...')
             message = 'Original and updated database have different row sequence!'
-            self.assertTrue(compare_row_sequence(orig_db_info, new_db_after_update), message)
+            self.assertTrue(compare_row_sequence(orig_db_info, db_info_after_update), message)
 
         @classmethod
         def tearDownClass(cls):

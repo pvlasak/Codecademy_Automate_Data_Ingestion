@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 import logging
-import sys
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -78,16 +78,18 @@ def df_generator(table_names, df_dict):
             yield from df_student_jobs_updates(df_dict['cademycode_student_jobs'])
 
 
-def join_dfs_and_export(new_df_dict):
+def join_dfs(new_df_dict):
     logger.debug("Clean dataframes are merged into single one.")
     df_merged = new_df_dict['cademycode_students_new'].merge(new_df_dict['cademycode_student_jobs_new'], how='left',
                                                              on='job_id')
     df_merged = df_merged.merge(new_df_dict['cademycode_courses_new'], how='left', on='career_path_id')
     df_merged.drop(labels=['job_id', 'career_path_id'], axis=1, inplace=True)
     logger.debug("Merged dataframe is being exported into CSV File.")
-    df_merged.to_csv("./subscriber-pipeline-starter-kit/dev/combined_file.csv")
     return df_merged
 
+
+def export_df(df):
+    df.to_csv("./subscriber-pipeline-starter-kit/dev/combined_file.csv")
 
 df_students_new_cols = {'uuid': 'INTEGER',
                         'name': 'VARCHAR',

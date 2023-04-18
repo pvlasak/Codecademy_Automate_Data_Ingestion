@@ -1,324 +1,547 @@
-[2023-04-13 13:43:06,024] {DEBUG} objects: #63 - Checking if original database file exists...
-[2023-04-13 13:43:06,024] {INFO} unit_tests: #180 - Original database file successfully found.
-[2023-04-13 13:43:06,024] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
-[2023-04-13 13:43:06,025] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students
-[2023-04-13 13:43:06,057] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:43:06,057] {INFO} unit_tests: #67 - Number of columns: 9
-[2023-04-13 13:43:06,057] {INFO} unit_tests: #68 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
-[2023-04-13 13:43:06,060] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses
-[2023-04-13 13:43:06,061] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:43:06,061] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:43:06,061] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:43:06,061] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs
-[2023-04-13 13:43:06,061] {INFO} unit_tests: #66 - Number of rows: 13
-[2023-04-13 13:43:06,061] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:43:06,061] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
-[2023-04-13 13:43:06,061] {DEBUG} objects: #63 - Checking if new database file exists...
-[2023-04-13 13:43:06,061] {INFO} unit_tests: #180 - New database file successfully found.
-[2023-04-13 13:43:06,061] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:43:06,061] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
-[2023-04-13 13:43:06,090] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:43:06,090] {INFO} unit_tests: #67 - Number of columns: 11
-[2023-04-13 13:43:06,090] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
-[2023-04-13 13:43:06,090] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
-[2023-04-13 13:43:06,090] {INFO} unit_tests: #66 - Number of rows: 11
-[2023-04-13 13:43:06,091] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:43:06,091] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:43:06,091] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
-[2023-04-13 13:43:06,091] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:43:06,091] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:43:06,091] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
-[2023-04-13 13:43:06,092] {DEBUG} unit_tests: #91 - Checking for database updates...
-[2023-04-13 13:43:06,093] {WARNING} unit_tests: #142 - New students have been added into the original database.
-[2023-04-13 13:43:06,093] {INFO} unit_tests: #144 - These rows are new: [(9, 'Tricia Delacruz', '1961-10-20', 'F', '{"mailing_address": "997 Dewy Apple, Lake Lindsey, Washington, 78266", "email": "tricia_delacruz6622@woohoo.com"}', '1.0', '6.0', '9.0', '1.75')]
-[2023-04-13 13:43:06,093] {WARNING} unit_tests: #145 - Students have been removed from the original database.
-[2023-04-13 13:43:06,093] {INFO} unit_tests: #147 - These rows have been removed: [(1, 'Annabelle Avery', '1943-07-03', 'F', 7, 6, 1, 4.99, '303 N Timber Key, Irondale, Wisconsin, 84736', 'annabelle_avery9376@woohoo.com', ' Wisconsin')]
-[2023-04-13 13:43:06,093] {INFO} unit_tests: #158 - Updates made in the original database have been checked.
-[2023-04-13 13:43:06,093] {INFO} objects: #88 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:43:06,093] {INFO} objects: #91 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
-[2023-04-13 13:43:06,113] {INFO} objects: #99 - Setting up new table names..
-[2023-04-13 13:43:06,113] {DEBUG} update_database: #72 - Starting the process of data wrangling, cleaning, tidying.
-[2023-04-13 13:43:06,113] {DEBUG} update_database: #18 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
-[2023-04-13 13:43:06,113] {DEBUG} update_database: #20 - Median for column 'time_spent_hrs' is being calculated.
-[2023-04-13 13:43:06,113] {DEBUG} update_database: #22 - All NAN values in column 'time_spent_hrs' are filled by median value.
-[2023-04-13 13:43:06,113] {DEBUG} update_database: #24 - All NAN values in column 'current_career_path_id' are filled 0.
-[2023-04-13 13:43:06,113] {DEBUG} update_database: #26 - Median for column 'num_course_taken' is being calculated.
-[2023-04-13 13:43:06,119] {DEBUG} update_database: #28 - All NAN values in column 'num_course_taken' are filled by median value.
-[2023-04-13 13:43:06,120] {DEBUG} update_database: #30 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
-[2023-04-13 13:43:06,137] {DEBUG} update_database: #36 - Values in 'job_id' column are converted to numeric format.
-[2023-04-13 13:43:06,137] {DEBUG} update_database: #38 - Values in 'num_course_taken' column are converted to numeric format.
-[2023-04-13 13:43:06,140] {DEBUG} update_database: #40 - Values in 'current_career_path_id' column are converted to numeric format.
-[2023-04-13 13:43:06,141] {DEBUG} update_database: #42 - Values in 'time_spent_hrs' column are converted to numeric format.
-[2023-04-13 13:43:06,143] {DEBUG} update_database: #44 - Values in 'job_id' column are converted to integer data type.
-[2023-04-13 13:43:06,144] {DEBUG} update_database: #46 - Values in 'num_course_taken' column are converted to integer data type.
-[2023-04-13 13:43:06,144] {DEBUG} update_database: #48 - Values in 'current_career_path_id' column are converted to integer data type.
-[2023-04-13 13:43:06,144] {DEBUG} update_database: #50 - Column 'contact_info' is dropped.
-[2023-04-13 13:43:06,146] {DEBUG} update_database: #58 - New row 'career_path_id' = 0 is being created.
-[2023-04-13 13:43:06,147] {DEBUG} update_database: #66 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
-[2023-04-13 13:43:06,147] {INFO} objects: #88 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:43:06,149] {INFO} objects: #108 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:43:06,180] {INFO} objects: #108 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:43:06,190] {INFO} objects: #108 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:43:06,199] {INFO} objects: #115 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
-[2023-04-13 13:43:06,199] {INFO} objects: #115 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:43:06,200] {INFO} objects: #88 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:43:06,200] {INFO} objects: #91 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
-[2023-04-13 13:43:06,221] {DEBUG} update_database: #83 - Clean dataframes are merged into single one.
-[2023-04-13 13:43:06,229] {DEBUG} update_database: #88 - Merged dataframe is being exported into CSV File.
-[2023-04-13 13:43:06,258] {INFO} objects: #115 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:43:06,258] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:43:06,258] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
-[2023-04-13 13:43:06,276] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:43:06,276] {INFO} unit_tests: #67 - Number of columns: 11
-[2023-04-13 13:43:06,276] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
-[2023-04-13 13:43:06,276] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
-[2023-04-13 13:43:06,276] {INFO} unit_tests: #66 - Number of rows: 11
-[2023-04-13 13:43:06,276] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:43:06,276] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:43:06,276] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
-[2023-04-13 13:43:06,276] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:43:06,276] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:43:06,276] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
-[2023-04-13 13:45:02,560] {DEBUG} objects: #63 - Checking if original database file exists...
-[2023-04-13 13:45:02,560] {INFO} unit_tests: #180 - Original database file successfully found.
-[2023-04-13 13:45:02,560] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
-[2023-04-13 13:45:02,560] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students
-[2023-04-13 13:45:02,609] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:45:02,609] {INFO} unit_tests: #67 - Number of columns: 9
-[2023-04-13 13:45:02,609] {INFO} unit_tests: #68 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
-[2023-04-13 13:45:02,609] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses
-[2023-04-13 13:45:02,610] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:45:02,610] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:45:02,610] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:45:02,610] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs
-[2023-04-13 13:45:02,610] {INFO} unit_tests: #66 - Number of rows: 13
-[2023-04-13 13:45:02,610] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:45:02,610] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
-[2023-04-13 13:45:02,610] {DEBUG} objects: #63 - Checking if new database file exists...
-[2023-04-13 13:45:02,610] {INFO} unit_tests: #180 - New database file successfully found.
-[2023-04-13 13:45:02,610] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:45:02,610] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #67 - Number of columns: 11
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
-[2023-04-13 13:45:02,628] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #66 - Number of rows: 11
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:45:02,628] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
-[2023-04-13 13:45:02,628] {DEBUG} unit_tests: #91 - Checking for database updates...
-[2023-04-13 13:45:02,628] {WARNING} unit_tests: #142 - New students have been added into the original database.
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #144 - These rows are new: [(9, 'Tricia Delacruz', '1961-10-20', 'F', '{"mailing_address": "997 Dewy Apple, Lake Lindsey, Washington, 78266", "email": "tricia_delacruz6622@woohoo.com"}', '1.0', '6.0', '9.0', '1.75')]
-[2023-04-13 13:45:02,628] {WARNING} unit_tests: #145 - Students have been removed from the original database.
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #147 - These rows have been removed: [(1, 'Annabelle Avery', '1943-07-03', 'F', 7, 6, 1, 4.99, '303 N Timber Key, Irondale, Wisconsin, 84736', 'annabelle_avery9376@woohoo.com', ' Wisconsin')]
-[2023-04-13 13:45:02,628] {INFO} unit_tests: #158 - Updates made in the original database have been checked.
-[2023-04-13 13:45:02,628] {INFO} objects: #88 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:45:02,628] {INFO} objects: #91 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
-[2023-04-13 13:45:02,657] {INFO} objects: #99 - Setting up new table names..
-[2023-04-13 13:45:02,657] {DEBUG} update_database: #72 - Starting the process of data wrangling, cleaning, tidying.
-[2023-04-13 13:45:02,658] {DEBUG} update_database: #18 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
-[2023-04-13 13:45:02,659] {DEBUG} update_database: #20 - Median for column 'time_spent_hrs' is being calculated.
-[2023-04-13 13:45:02,661] {DEBUG} update_database: #22 - All NAN values in column 'time_spent_hrs' are filled by median value.
-[2023-04-13 13:45:02,661] {DEBUG} update_database: #24 - All NAN values in column 'current_career_path_id' are filled 0.
-[2023-04-13 13:45:02,662] {DEBUG} update_database: #26 - Median for column 'num_course_taken' is being calculated.
-[2023-04-13 13:45:02,662] {DEBUG} update_database: #28 - All NAN values in column 'num_course_taken' are filled by median value.
-[2023-04-13 13:45:02,662] {DEBUG} update_database: #30 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
-[2023-04-13 13:45:02,680] {DEBUG} update_database: #36 - Values in 'job_id' column are converted to numeric format.
-[2023-04-13 13:45:02,682] {DEBUG} update_database: #38 - Values in 'num_course_taken' column are converted to numeric format.
-[2023-04-13 13:45:02,682] {DEBUG} update_database: #40 - Values in 'current_career_path_id' column are converted to numeric format.
-[2023-04-13 13:45:02,682] {DEBUG} update_database: #42 - Values in 'time_spent_hrs' column are converted to numeric format.
-[2023-04-13 13:45:02,682] {DEBUG} update_database: #44 - Values in 'job_id' column are converted to integer data type.
-[2023-04-13 13:45:02,682] {DEBUG} update_database: #46 - Values in 'num_course_taken' column are converted to integer data type.
-[2023-04-13 13:45:02,682] {DEBUG} update_database: #48 - Values in 'current_career_path_id' column are converted to integer data type.
-[2023-04-13 13:45:02,682] {DEBUG} update_database: #50 - Column 'contact_info' is dropped.
-[2023-04-13 13:45:02,682] {DEBUG} update_database: #58 - New row 'career_path_id' = 0 is being created.
-[2023-04-13 13:45:02,682] {DEBUG} update_database: #66 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
-[2023-04-13 13:45:02,682] {INFO} objects: #88 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:45:02,682] {INFO} objects: #108 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:45:02,723] {INFO} objects: #108 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:45:02,732] {INFO} objects: #108 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:45:02,742] {INFO} objects: #115 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
-[2023-04-13 13:45:02,742] {INFO} objects: #115 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:45:02,743] {INFO} objects: #88 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:45:02,743] {INFO} objects: #91 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
-[2023-04-13 13:45:02,769] {DEBUG} update_database: #83 - Clean dataframes are merged into single one.
-[2023-04-13 13:45:02,777] {DEBUG} update_database: #88 - Merged dataframe is being exported into CSV File.
-[2023-04-13 13:45:02,810] {INFO} objects: #115 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:45:02,810] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:45:02,811] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
-[2023-04-13 13:45:02,830] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:45:02,830] {INFO} unit_tests: #67 - Number of columns: 11
-[2023-04-13 13:45:02,830] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
-[2023-04-13 13:45:02,830] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
-[2023-04-13 13:45:02,830] {INFO} unit_tests: #66 - Number of rows: 11
-[2023-04-13 13:45:02,830] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:45:02,830] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:45:02,835] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
-[2023-04-13 13:45:02,835] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:45:02,835] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:45:02,835] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
-[2023-04-13 13:46:51,895] {DEBUG} objects: #63 - Checking if original database file exists...
-[2023-04-13 13:46:51,895] {INFO} unit_tests: #180 - Original database file successfully found.
-[2023-04-13 13:46:51,896] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
-[2023-04-13 13:46:51,896] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students
-[2023-04-13 13:46:51,929] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:46:51,929] {INFO} unit_tests: #67 - Number of columns: 9
-[2023-04-13 13:46:51,929] {INFO} unit_tests: #68 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
-[2023-04-13 13:46:51,929] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses
-[2023-04-13 13:46:51,929] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:46:51,929] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:46:51,929] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:46:51,929] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs
-[2023-04-13 13:46:51,929] {INFO} unit_tests: #66 - Number of rows: 13
-[2023-04-13 13:46:51,929] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:46:51,929] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
-[2023-04-13 13:46:51,929] {DEBUG} objects: #63 - Checking if new database file exists...
-[2023-04-13 13:46:51,929] {INFO} unit_tests: #180 - New database file successfully found.
-[2023-04-13 13:46:51,929] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:46:51,929] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
-[2023-04-13 13:46:51,954] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:46:51,954] {INFO} unit_tests: #67 - Number of columns: 11
-[2023-04-13 13:46:51,954] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
-[2023-04-13 13:46:51,954] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
-[2023-04-13 13:46:51,954] {INFO} unit_tests: #66 - Number of rows: 11
-[2023-04-13 13:46:51,954] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:46:51,954] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:46:51,954] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
-[2023-04-13 13:46:51,957] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:46:51,957] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:46:51,957] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
-[2023-04-13 13:46:51,958] {DEBUG} unit_tests: #91 - Checking for database updates...
-[2023-04-13 13:46:51,959] {WARNING} unit_tests: #142 - New students have been added into the original database.
-[2023-04-13 13:46:51,959] {INFO} unit_tests: #144 - These rows are new: [(9, 'Tricia Delacruz', '1961-10-20', 'F', '{"mailing_address": "997 Dewy Apple, Lake Lindsey, Washington, 78266", "email": "tricia_delacruz6622@woohoo.com"}', '1.0', '6.0', '9.0', '1.75')]
-[2023-04-13 13:46:51,959] {WARNING} unit_tests: #145 - Students have been removed from the original database.
-[2023-04-13 13:46:51,959] {INFO} unit_tests: #147 - These rows have been removed: [(1, 'Annabelle Avery', '1943-07-03', 'F', 7, 6, 1, 4.99, '303 N Timber Key, Irondale, Wisconsin, 84736', 'annabelle_avery9376@woohoo.com', ' Wisconsin')]
-[2023-04-13 13:46:51,960] {INFO} unit_tests: #158 - Updates made in the original database have been checked.
-[2023-04-13 13:46:51,960] {INFO} objects: #88 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:46:51,960] {INFO} objects: #91 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
-[2023-04-13 13:46:51,966] {INFO} objects: #99 - Setting up new table names..
-[2023-04-13 13:46:51,966] {DEBUG} update_database: #71 - Starting the process of data wrangling, cleaning, tidying.
-[2023-04-13 13:46:51,966] {DEBUG} update_database: #17 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
-[2023-04-13 13:46:51,966] {DEBUG} update_database: #19 - Median for column 'time_spent_hrs' is being calculated.
-[2023-04-13 13:46:51,982] {DEBUG} update_database: #21 - All NAN values in column 'time_spent_hrs' are filled by median value.
-[2023-04-13 13:46:51,982] {DEBUG} update_database: #23 - All NAN values in column 'current_career_path_id' are filled 0.
-[2023-04-13 13:46:51,983] {DEBUG} update_database: #25 - Median for column 'num_course_taken' is being calculated.
-[2023-04-13 13:46:51,984] {DEBUG} update_database: #27 - All NAN values in column 'num_course_taken' are filled by median value.
-[2023-04-13 13:46:51,984] {DEBUG} update_database: #29 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
-[2023-04-13 13:46:51,995] {DEBUG} update_database: #35 - Values in 'job_id' column are converted to numeric format.
-[2023-04-13 13:46:51,995] {DEBUG} update_database: #37 - Values in 'num_course_taken' column are converted to numeric format.
-[2023-04-13 13:46:51,995] {DEBUG} update_database: #39 - Values in 'current_career_path_id' column are converted to numeric format.
-[2023-04-13 13:46:51,995] {DEBUG} update_database: #41 - Values in 'time_spent_hrs' column are converted to numeric format.
-[2023-04-13 13:46:51,995] {DEBUG} update_database: #43 - Values in 'job_id' column are converted to integer data type.
-[2023-04-13 13:46:51,995] {DEBUG} update_database: #45 - Values in 'num_course_taken' column are converted to integer data type.
-[2023-04-13 13:46:51,995] {DEBUG} update_database: #47 - Values in 'current_career_path_id' column are converted to integer data type.
-[2023-04-13 13:46:51,995] {DEBUG} update_database: #49 - Column 'contact_info' is dropped.
-[2023-04-13 13:46:51,995] {DEBUG} update_database: #57 - New row 'career_path_id' = 0 is being created.
-[2023-04-13 13:46:51,995] {DEBUG} update_database: #65 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
-[2023-04-13 13:46:52,011] {INFO} objects: #88 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:46:52,011] {INFO} objects: #108 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:46:52,044] {INFO} objects: #108 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:46:52,054] {INFO} objects: #108 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:46:52,064] {INFO} objects: #115 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
-[2023-04-13 13:46:52,064] {INFO} objects: #115 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:46:52,065] {INFO} objects: #88 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:46:52,065] {INFO} objects: #91 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
-[2023-04-13 13:46:52,090] {DEBUG} update_database: #82 - Clean dataframes are merged into single one.
-[2023-04-13 13:46:52,096] {DEBUG} update_database: #87 - Merged dataframe is being exported into CSV File.
-[2023-04-13 13:46:52,133] {INFO} objects: #115 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:46:52,134] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:46:52,134] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
-[2023-04-13 13:46:52,145] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:46:52,145] {INFO} unit_tests: #67 - Number of columns: 11
-[2023-04-13 13:46:52,145] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
-[2023-04-13 13:46:52,145] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
-[2023-04-13 13:46:52,160] {INFO} unit_tests: #66 - Number of rows: 11
-[2023-04-13 13:46:52,160] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:46:52,161] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:46:52,161] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
-[2023-04-13 13:46:52,162] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:46:52,162] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:46:52,162] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
-[2023-04-13 13:47:36,749] {DEBUG} objects: #62 - Checking if original database file exists...
-[2023-04-13 13:47:36,749] {INFO} unit_tests: #180 - Original database file successfully found.
-[2023-04-13 13:47:36,750] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
-[2023-04-13 13:47:36,750] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students
-[2023-04-13 13:47:36,778] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:47:36,778] {INFO} unit_tests: #67 - Number of columns: 9
-[2023-04-13 13:47:36,778] {INFO} unit_tests: #68 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
-[2023-04-13 13:47:36,778] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses
-[2023-04-13 13:47:36,778] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:47:36,778] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:47:36,778] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:47:36,778] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs
-[2023-04-13 13:47:36,778] {INFO} unit_tests: #66 - Number of rows: 13
-[2023-04-13 13:47:36,778] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:47:36,778] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
-[2023-04-13 13:47:36,778] {DEBUG} objects: #62 - Checking if new database file exists...
-[2023-04-13 13:47:36,778] {INFO} unit_tests: #180 - New database file successfully found.
-[2023-04-13 13:47:36,778] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:47:36,778] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
-[2023-04-13 13:47:36,796] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:47:36,796] {INFO} unit_tests: #67 - Number of columns: 11
-[2023-04-13 13:47:36,796] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
-[2023-04-13 13:47:36,796] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
-[2023-04-13 13:47:36,796] {INFO} unit_tests: #66 - Number of rows: 11
-[2023-04-13 13:47:36,796] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:47:36,796] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:47:36,796] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
-[2023-04-13 13:47:36,796] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:47:36,796] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:47:36,796] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
-[2023-04-13 13:47:36,796] {DEBUG} unit_tests: #91 - Checking for database updates...
-[2023-04-13 13:47:36,812] {WARNING} unit_tests: #142 - New students have been added into the original database.
-[2023-04-13 13:47:36,812] {INFO} unit_tests: #144 - These rows are new: [(9, 'Tricia Delacruz', '1961-10-20', 'F', '{"mailing_address": "997 Dewy Apple, Lake Lindsey, Washington, 78266", "email": "tricia_delacruz6622@woohoo.com"}', '1.0', '6.0', '9.0', '1.75')]
-[2023-04-13 13:47:36,812] {WARNING} unit_tests: #145 - Students have been removed from the original database.
-[2023-04-13 13:47:36,812] {INFO} unit_tests: #147 - These rows have been removed: [(1, 'Annabelle Avery', '1943-07-03', 'F', 7, 6, 1, 4.99, '303 N Timber Key, Irondale, Wisconsin, 84736', 'annabelle_avery9376@woohoo.com', ' Wisconsin')]
-[2023-04-13 13:47:36,812] {INFO} unit_tests: #158 - Updates made in the original database have been checked.
-[2023-04-13 13:47:36,812] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:47:36,812] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
-[2023-04-13 13:47:36,831] {INFO} objects: #98 - Setting up new table names..
-[2023-04-13 13:47:36,831] {DEBUG} update_database: #71 - Starting the process of data wrangling, cleaning, tidying.
-[2023-04-13 13:47:36,831] {DEBUG} update_database: #17 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
-[2023-04-13 13:47:36,831] {DEBUG} update_database: #19 - Median for column 'time_spent_hrs' is being calculated.
-[2023-04-13 13:47:36,831] {DEBUG} update_database: #21 - All NAN values in column 'time_spent_hrs' are filled by median value.
-[2023-04-13 13:47:36,831] {DEBUG} update_database: #23 - All NAN values in column 'current_career_path_id' are filled 0.
-[2023-04-13 13:47:36,831] {DEBUG} update_database: #25 - Median for column 'num_course_taken' is being calculated.
-[2023-04-13 13:47:36,831] {DEBUG} update_database: #27 - All NAN values in column 'num_course_taken' are filled by median value.
-[2023-04-13 13:47:36,831] {DEBUG} update_database: #29 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
-[2023-04-13 13:47:36,846] {DEBUG} update_database: #35 - Values in 'job_id' column are converted to numeric format.
-[2023-04-13 13:47:36,846] {DEBUG} update_database: #37 - Values in 'num_course_taken' column are converted to numeric format.
-[2023-04-13 13:47:36,846] {DEBUG} update_database: #39 - Values in 'current_career_path_id' column are converted to numeric format.
-[2023-04-13 13:47:36,846] {DEBUG} update_database: #41 - Values in 'time_spent_hrs' column are converted to numeric format.
-[2023-04-13 13:47:36,846] {DEBUG} update_database: #43 - Values in 'job_id' column are converted to integer data type.
-[2023-04-13 13:47:36,846] {DEBUG} update_database: #45 - Values in 'num_course_taken' column are converted to integer data type.
-[2023-04-13 13:47:36,846] {DEBUG} update_database: #47 - Values in 'current_career_path_id' column are converted to integer data type.
-[2023-04-13 13:47:36,846] {DEBUG} update_database: #49 - Column 'contact_info' is dropped.
-[2023-04-13 13:47:36,862] {DEBUG} update_database: #57 - New row 'career_path_id' = 0 is being created.
-[2023-04-13 13:47:36,864] {DEBUG} update_database: #65 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
-[2023-04-13 13:47:36,864] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:47:36,864] {INFO} objects: #107 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:47:36,900] {INFO} objects: #107 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:47:36,911] {INFO} objects: #107 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
-[2023-04-13 13:47:36,920] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
-[2023-04-13 13:47:36,920] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:47:36,920] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
-[2023-04-13 13:47:36,920] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
-[2023-04-13 13:47:36,947] {DEBUG} update_database: #82 - Clean dataframes are merged into single one.
-[2023-04-13 13:47:36,954] {DEBUG} update_database: #87 - Merged dataframe is being exported into CSV File.
-[2023-04-13 13:47:36,993] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:47:36,994] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
-[2023-04-13 13:47:36,994] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
-[2023-04-13 13:47:37,017] {INFO} unit_tests: #66 - Number of rows: 5000
-[2023-04-13 13:47:37,017] {INFO} unit_tests: #67 - Number of columns: 11
-[2023-04-13 13:47:37,017] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
-[2023-04-13 13:47:37,017] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
-[2023-04-13 13:47:37,017] {INFO} unit_tests: #66 - Number of rows: 11
-[2023-04-13 13:47:37,017] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:47:37,017] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
-[2023-04-13 13:47:37,017] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
-[2023-04-13 13:47:37,017] {INFO} unit_tests: #66 - Number of rows: 10
-[2023-04-13 13:47:37,017] {INFO} unit_tests: #67 - Number of columns: 3
-[2023-04-13 13:47:37,017] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-14 14:27:57,815] {DEBUG} objects: #62 - Checking if original database file exists...
+[2023-04-14 14:27:57,815] {INFO} unit_tests: #180 - Original database file successfully found.
+[2023-04-14 14:27:57,816] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-14 14:27:57,816] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students
+[2023-04-14 14:27:57,846] {INFO} unit_tests: #66 - Number of rows: 5000
+[2023-04-14 14:27:57,846] {INFO} unit_tests: #67 - Number of columns: 9
+[2023-04-14 14:27:57,846] {INFO} unit_tests: #68 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-14 14:27:57,849] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses
+[2023-04-14 14:27:57,851] {INFO} unit_tests: #66 - Number of rows: 10
+[2023-04-14 14:27:57,851] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-14 14:27:57,851] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-14 14:27:57,851] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs
+[2023-04-14 14:27:57,851] {INFO} unit_tests: #66 - Number of rows: 13
+[2023-04-14 14:27:57,851] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-14 14:27:57,852] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-14 14:27:57,852] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-14 14:27:57,853] {DEBUG} unit_tests: #182 - New database does not exist yet. Creating a new file.
+[2023-04-14 14:27:57,853] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-14 14:27:57,854] {INFO} unit_tests: #158 - Updates made in the original database have been checked.
+[2023-04-14 14:27:57,854] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-14 14:27:57,854] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
+[2023-04-14 14:27:57,872] {INFO} objects: #98 - Setting up new table names..
+[2023-04-14 14:27:57,872] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-14 14:27:57,872] {DEBUG} update_database: #71 - Starting the process of data wrangling, cleaning, tidying.
+[2023-04-14 14:27:57,872] {DEBUG} update_database: #17 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
+[2023-04-14 14:27:57,872] {DEBUG} update_database: #19 - Median for column 'time_spent_hrs' is being calculated.
+[2023-04-14 14:27:57,876] {DEBUG} update_database: #21 - All NAN values in column 'time_spent_hrs' are filled by median value.
+[2023-04-14 14:27:57,876] {DEBUG} update_database: #23 - All NAN values in column 'current_career_path_id' are filled 0.
+[2023-04-14 14:27:57,877] {DEBUG} update_database: #25 - Median for column 'num_course_taken' is being calculated.
+[2023-04-14 14:27:57,878] {DEBUG} update_database: #27 - All NAN values in column 'num_course_taken' are filled by median value.
+[2023-04-14 14:27:57,879] {DEBUG} update_database: #29 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
+[2023-04-14 14:27:57,896] {DEBUG} update_database: #35 - Values in 'job_id' column are converted to numeric format.
+[2023-04-14 14:27:57,898] {DEBUG} update_database: #37 - Values in 'num_course_taken' column are converted to numeric format.
+[2023-04-14 14:27:57,900] {DEBUG} update_database: #39 - Values in 'current_career_path_id' column are converted to numeric format.
+[2023-04-14 14:27:57,900] {DEBUG} update_database: #41 - Values in 'time_spent_hrs' column are converted to numeric format.
+[2023-04-14 14:27:57,900] {DEBUG} update_database: #43 - Values in 'job_id' column are converted to integer data type.
+[2023-04-14 14:27:57,900] {DEBUG} update_database: #45 - Values in 'num_course_taken' column are converted to integer data type.
+[2023-04-14 14:27:57,900] {DEBUG} update_database: #47 - Values in 'current_career_path_id' column are converted to integer data type.
+[2023-04-14 14:27:57,900] {DEBUG} update_database: #49 - Column 'contact_info' is dropped.
+[2023-04-14 14:27:57,900] {DEBUG} update_database: #57 - New row 'career_path_id' = 0 is being created.
+[2023-04-14 14:27:57,907] {DEBUG} update_database: #65 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
+[2023-04-14 14:27:57,908] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-14 14:27:57,912] {INFO} objects: #107 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-14 14:27:57,945] {INFO} objects: #107 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-14 14:27:57,960] {INFO} objects: #107 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-14 14:27:57,970] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-14 14:27:57,970] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-14 14:27:57,970] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
+[2023-04-14 14:27:57,989] {INFO} objects: #98 - Setting up new table names..
+[2023-04-14 14:27:57,989] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-14 14:27:57,989] {DEBUG} update_database: #82 - Clean dataframes are merged into single one.
+[2023-04-14 14:27:57,989] {DEBUG} update_database: #87 - Merged dataframe is being exported into CSV File.
+[2023-04-14 14:27:58,022] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-14 14:27:58,022] {INFO} unit_tests: #180 - New database file successfully found.
+[2023-04-14 14:27:58,022] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-14 14:27:58,022] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
+[2023-04-14 14:27:58,055] {INFO} unit_tests: #66 - Number of rows: 5000
+[2023-04-14 14:27:58,055] {INFO} unit_tests: #67 - Number of columns: 11
+[2023-04-14 14:27:58,055] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-14 14:27:58,055] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
+[2023-04-14 14:27:58,055] {INFO} unit_tests: #66 - Number of rows: 11
+[2023-04-14 14:27:58,055] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-14 14:27:58,055] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-14 14:27:58,055] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-14 14:27:58,055] {INFO} unit_tests: #66 - Number of rows: 10
+[2023-04-14 14:27:58,055] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-14 14:27:58,055] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-14 15:27:57,976] {DEBUG} objects: #62 - Checking if original database file exists...
+[2023-04-14 15:27:57,976] {INFO} unit_tests: #180 - Original database file successfully found.
+[2023-04-14 15:27:57,977] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-14 15:27:57,977] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students
+[2023-04-14 15:27:58,003] {INFO} unit_tests: #66 - Number of rows: 5000
+[2023-04-14 15:27:58,003] {INFO} unit_tests: #67 - Number of columns: 9
+[2023-04-14 15:27:58,003] {INFO} unit_tests: #68 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-14 15:27:58,003] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses
+[2023-04-14 15:27:58,003] {INFO} unit_tests: #66 - Number of rows: 10
+[2023-04-14 15:27:58,003] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-14 15:27:58,003] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-14 15:27:58,003] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs
+[2023-04-14 15:27:58,003] {INFO} unit_tests: #66 - Number of rows: 13
+[2023-04-14 15:27:58,003] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-14 15:27:58,003] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-14 15:27:58,003] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-14 15:27:58,003] {INFO} unit_tests: #180 - New database file successfully found.
+[2023-04-14 15:27:58,003] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-14 15:27:58,003] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
+[2023-04-14 15:27:58,036] {INFO} unit_tests: #66 - Number of rows: 5000
+[2023-04-14 15:27:58,037] {INFO} unit_tests: #67 - Number of columns: 11
+[2023-04-14 15:27:58,037] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-14 15:27:58,037] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
+[2023-04-14 15:27:58,037] {INFO} unit_tests: #66 - Number of rows: 11
+[2023-04-14 15:27:58,037] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-14 15:27:58,037] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-14 15:27:58,037] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-14 15:27:58,037] {INFO} unit_tests: #66 - Number of rows: 10
+[2023-04-14 15:27:58,037] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-14 15:27:58,037] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-14 15:27:58,037] {DEBUG} unit_tests: #91 - Checking for database updates...
+[2023-04-14 15:27:58,037] {INFO} unit_tests: #158 - Updates made in the original database have been checked.
+[2023-04-14 15:27:58,037] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-14 15:27:58,037] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
+[2023-04-14 15:27:58,061] {INFO} objects: #98 - Setting up new table names..
+[2023-04-14 15:27:58,061] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-14 15:27:58,061] {DEBUG} update_database: #71 - Starting the process of data wrangling, cleaning, tidying.
+[2023-04-14 15:27:58,062] {DEBUG} update_database: #17 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
+[2023-04-14 15:27:58,063] {DEBUG} update_database: #19 - Median for column 'time_spent_hrs' is being calculated.
+[2023-04-14 15:27:58,064] {DEBUG} update_database: #21 - All NAN values in column 'time_spent_hrs' are filled by median value.
+[2023-04-14 15:27:58,065] {DEBUG} update_database: #23 - All NAN values in column 'current_career_path_id' are filled 0.
+[2023-04-14 15:27:58,065] {DEBUG} update_database: #25 - Median for column 'num_course_taken' is being calculated.
+[2023-04-14 15:27:58,066] {DEBUG} update_database: #27 - All NAN values in column 'num_course_taken' are filled by median value.
+[2023-04-14 15:27:58,066] {DEBUG} update_database: #29 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
+[2023-04-14 15:27:58,082] {DEBUG} update_database: #35 - Values in 'job_id' column are converted to numeric format.
+[2023-04-14 15:27:58,082] {DEBUG} update_database: #37 - Values in 'num_course_taken' column are converted to numeric format.
+[2023-04-14 15:27:58,082] {DEBUG} update_database: #39 - Values in 'current_career_path_id' column are converted to numeric format.
+[2023-04-14 15:27:58,082] {DEBUG} update_database: #41 - Values in 'time_spent_hrs' column are converted to numeric format.
+[2023-04-14 15:27:58,082] {DEBUG} update_database: #43 - Values in 'job_id' column are converted to integer data type.
+[2023-04-14 15:27:58,082] {DEBUG} update_database: #45 - Values in 'num_course_taken' column are converted to integer data type.
+[2023-04-14 15:27:58,082] {DEBUG} update_database: #47 - Values in 'current_career_path_id' column are converted to integer data type.
+[2023-04-14 15:27:58,082] {DEBUG} update_database: #49 - Column 'contact_info' is dropped.
+[2023-04-14 15:27:58,082] {DEBUG} update_database: #57 - New row 'career_path_id' = 0 is being created.
+[2023-04-14 15:27:58,082] {DEBUG} update_database: #65 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
+[2023-04-14 15:27:58,098] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-14 15:27:58,098] {INFO} objects: #107 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-14 15:27:58,138] {INFO} objects: #107 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-14 15:27:58,149] {INFO} objects: #107 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-14 15:27:58,159] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-14 15:27:58,160] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-14 15:27:58,160] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
+[2023-04-14 15:27:58,174] {INFO} objects: #98 - Setting up new table names..
+[2023-04-14 15:27:58,174] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-14 15:27:58,174] {DEBUG} update_database: #82 - Clean dataframes are merged into single one.
+[2023-04-14 15:27:58,194] {DEBUG} update_database: #87 - Merged dataframe is being exported into CSV File.
+[2023-04-14 15:27:58,235] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-14 15:27:58,235] {INFO} unit_tests: #180 - New database file successfully found.
+[2023-04-14 15:27:58,235] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-14 15:27:58,235] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
+[2023-04-14 15:27:58,260] {INFO} unit_tests: #66 - Number of rows: 5000
+[2023-04-14 15:27:58,260] {INFO} unit_tests: #67 - Number of columns: 11
+[2023-04-14 15:27:58,260] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-14 15:27:58,260] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
+[2023-04-14 15:27:58,260] {INFO} unit_tests: #66 - Number of rows: 11
+[2023-04-14 15:27:58,260] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-14 15:27:58,260] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-14 15:27:58,260] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-14 15:27:58,263] {INFO} unit_tests: #66 - Number of rows: 10
+[2023-04-14 15:27:58,263] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-14 15:27:58,263] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 11:18:07,689] {DEBUG} objects: #62 - Checking if original database file exists...
+[2023-04-18 11:18:07,690] {INFO} unit_tests: #180 - Original database file successfully found.
+[2023-04-18 11:18:07,690] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-18 11:18:07,690] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students
+[2023-04-18 11:18:07,732] {INFO} unit_tests: #66 - Number of rows: 5000
+[2023-04-18 11:18:07,732] {INFO} unit_tests: #67 - Number of columns: 9
+[2023-04-18 11:18:07,732] {INFO} unit_tests: #68 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-18 11:18:07,732] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses
+[2023-04-18 11:18:07,733] {INFO} unit_tests: #66 - Number of rows: 10
+[2023-04-18 11:18:07,733] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-18 11:18:07,733] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 11:18:07,733] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs
+[2023-04-18 11:18:07,734] {INFO} unit_tests: #66 - Number of rows: 13
+[2023-04-18 11:18:07,734] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-18 11:18:07,734] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 11:18:07,734] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-18 11:18:07,734] {INFO} unit_tests: #180 - New database file successfully found.
+[2023-04-18 11:18:07,734] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:18:07,735] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
+[2023-04-18 11:18:07,755] {INFO} unit_tests: #66 - Number of rows: 5000
+[2023-04-18 11:18:07,755] {INFO} unit_tests: #67 - Number of columns: 11
+[2023-04-18 11:18:07,755] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-18 11:18:07,755] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
+[2023-04-18 11:18:07,755] {INFO} unit_tests: #66 - Number of rows: 11
+[2023-04-18 11:18:07,755] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-18 11:18:07,755] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 11:18:07,755] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-18 11:18:07,755] {INFO} unit_tests: #66 - Number of rows: 10
+[2023-04-18 11:18:07,755] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-18 11:18:07,755] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 11:18:07,755] {DEBUG} unit_tests: #91 - Checking for database updates...
+[2023-04-18 11:18:07,755] {INFO} unit_tests: #158 - Updates made in the original database have been checked.
+[2023-04-18 11:18:07,755] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 11:18:07,755] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
+[2023-04-18 11:18:07,788] {INFO} objects: #98 - Setting up new table names..
+[2023-04-18 11:18:07,788] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-18 11:18:07,788] {DEBUG} update_database: #71 - Starting the process of data wrangling, cleaning, tidying.
+[2023-04-18 11:18:07,788] {DEBUG} update_database: #17 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
+[2023-04-18 11:18:07,788] {DEBUG} update_database: #19 - Median for column 'time_spent_hrs' is being calculated.
+[2023-04-18 11:18:07,788] {DEBUG} update_database: #21 - All NAN values in column 'time_spent_hrs' are filled by median value.
+[2023-04-18 11:18:07,788] {DEBUG} update_database: #23 - All NAN values in column 'current_career_path_id' are filled 0.
+[2023-04-18 11:18:07,804] {DEBUG} update_database: #25 - Median for column 'num_course_taken' is being calculated.
+[2023-04-18 11:18:07,804] {DEBUG} update_database: #27 - All NAN values in column 'num_course_taken' are filled by median value.
+[2023-04-18 11:18:07,804] {DEBUG} update_database: #29 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
+[2023-04-18 11:18:07,819] {DEBUG} update_database: #35 - Values in 'job_id' column are converted to numeric format.
+[2023-04-18 11:18:07,819] {DEBUG} update_database: #37 - Values in 'num_course_taken' column are converted to numeric format.
+[2023-04-18 11:18:07,819] {DEBUG} update_database: #39 - Values in 'current_career_path_id' column are converted to numeric format.
+[2023-04-18 11:18:07,819] {DEBUG} update_database: #41 - Values in 'time_spent_hrs' column are converted to numeric format.
+[2023-04-18 11:18:07,819] {DEBUG} update_database: #43 - Values in 'job_id' column are converted to integer data type.
+[2023-04-18 11:18:07,819] {DEBUG} update_database: #45 - Values in 'num_course_taken' column are converted to integer data type.
+[2023-04-18 11:18:07,819] {DEBUG} update_database: #47 - Values in 'current_career_path_id' column are converted to integer data type.
+[2023-04-18 11:18:07,819] {DEBUG} update_database: #49 - Column 'contact_info' is dropped.
+[2023-04-18 11:18:07,819] {DEBUG} update_database: #57 - New row 'career_path_id' = 0 is being created.
+[2023-04-18 11:18:07,835] {DEBUG} update_database: #65 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
+[2023-04-18 11:18:07,836] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 11:18:07,837] {INFO} objects: #107 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 11:18:08,059] {INFO} objects: #107 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 11:18:08,090] {INFO} objects: #107 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 11:18:08,178] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:18:08,179] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 11:18:08,179] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
+[2023-04-18 11:18:08,229] {INFO} objects: #98 - Setting up new table names..
+[2023-04-18 11:18:08,229] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:18:08,229] {DEBUG} update_database: #82 - Clean dataframes are merged into single one.
+[2023-04-18 11:18:08,229] {DEBUG} update_database: #87 - Merged dataframe is being exported into CSV File.
+[2023-04-18 11:18:08,282] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-18 11:18:08,282] {INFO} unit_tests: #180 - New database file successfully found.
+[2023-04-18 11:18:08,282] {DEBUG} unit_tests: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:18:08,282] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_students_new
+[2023-04-18 11:18:08,299] {INFO} unit_tests: #66 - Number of rows: 5000
+[2023-04-18 11:18:08,299] {INFO} unit_tests: #67 - Number of columns: 11
+[2023-04-18 11:18:08,299] {INFO} unit_tests: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-18 11:18:08,299] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_courses_new
+[2023-04-18 11:18:08,299] {INFO} unit_tests: #66 - Number of rows: 11
+[2023-04-18 11:18:08,299] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-18 11:18:08,299] {INFO} unit_tests: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 11:18:08,299] {DEBUG} unit_tests: #103 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-18 11:18:08,299] {INFO} unit_tests: #66 - Number of rows: 10
+[2023-04-18 11:18:08,299] {INFO} unit_tests: #67 - Number of columns: 3
+[2023-04-18 11:18:08,299] {INFO} unit_tests: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 11:24:16,099] {DEBUG} objects: #62 - Checking if original database file exists...
+[2023-04-18 11:24:16,100] {INFO} checks: #180 - Original database file successfully found.
+[2023-04-18 11:24:16,100] {DEBUG} checks: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-18 11:24:16,100] {DEBUG} checks: #103 - Getting information report for table named as cademycode_students
+[2023-04-18 11:24:16,117] {INFO} checks: #66 - Number of rows: 5000
+[2023-04-18 11:24:16,117] {INFO} checks: #67 - Number of columns: 9
+[2023-04-18 11:24:16,117] {INFO} checks: #68 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-18 11:24:16,133] {DEBUG} checks: #103 - Getting information report for table named as cademycode_courses
+[2023-04-18 11:24:16,133] {INFO} checks: #66 - Number of rows: 10
+[2023-04-18 11:24:16,133] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:24:16,133] {INFO} checks: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 11:24:16,133] {DEBUG} checks: #103 - Getting information report for table named as cademycode_student_jobs
+[2023-04-18 11:24:16,133] {INFO} checks: #66 - Number of rows: 13
+[2023-04-18 11:24:16,133] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:24:16,133] {INFO} checks: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 11:24:16,133] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-18 11:24:16,133] {INFO} checks: #180 - New database file successfully found.
+[2023-04-18 11:24:16,133] {DEBUG} checks: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:24:16,133] {DEBUG} checks: #103 - Getting information report for table named as cademycode_students_new
+[2023-04-18 11:24:16,150] {INFO} checks: #66 - Number of rows: 5000
+[2023-04-18 11:24:16,150] {INFO} checks: #67 - Number of columns: 11
+[2023-04-18 11:24:16,150] {INFO} checks: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-18 11:24:16,150] {DEBUG} checks: #103 - Getting information report for table named as cademycode_courses_new
+[2023-04-18 11:24:16,150] {INFO} checks: #66 - Number of rows: 11
+[2023-04-18 11:24:16,150] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:24:16,150] {INFO} checks: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 11:24:16,150] {DEBUG} checks: #103 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-18 11:24:16,150] {INFO} checks: #66 - Number of rows: 10
+[2023-04-18 11:24:16,150] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:24:16,150] {INFO} checks: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 11:24:16,150] {DEBUG} checks: #91 - Checking for database updates...
+[2023-04-18 11:24:16,150] {INFO} checks: #158 - Updates made in the original database have been checked.
+[2023-04-18 11:24:16,150] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 11:24:16,150] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
+[2023-04-18 11:24:16,166] {INFO} objects: #98 - Setting up new table names..
+[2023-04-18 11:24:16,166] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-18 11:24:16,166] {DEBUG} update_database: #71 - Starting the process of data wrangling, cleaning, tidying.
+[2023-04-18 11:24:16,182] {DEBUG} update_database: #17 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
+[2023-04-18 11:24:16,182] {DEBUG} update_database: #19 - Median for column 'time_spent_hrs' is being calculated.
+[2023-04-18 11:24:16,183] {DEBUG} update_database: #21 - All NAN values in column 'time_spent_hrs' are filled by median value.
+[2023-04-18 11:24:16,183] {DEBUG} update_database: #23 - All NAN values in column 'current_career_path_id' are filled 0.
+[2023-04-18 11:24:16,183] {DEBUG} update_database: #25 - Median for column 'num_course_taken' is being calculated.
+[2023-04-18 11:24:16,183] {DEBUG} update_database: #27 - All NAN values in column 'num_course_taken' are filled by median value.
+[2023-04-18 11:24:16,183] {DEBUG} update_database: #29 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
+[2023-04-18 11:24:16,190] {DEBUG} update_database: #35 - Values in 'job_id' column are converted to numeric format.
+[2023-04-18 11:24:16,190] {DEBUG} update_database: #37 - Values in 'num_course_taken' column are converted to numeric format.
+[2023-04-18 11:24:16,190] {DEBUG} update_database: #39 - Values in 'current_career_path_id' column are converted to numeric format.
+[2023-04-18 11:24:16,206] {DEBUG} update_database: #41 - Values in 'time_spent_hrs' column are converted to numeric format.
+[2023-04-18 11:24:16,207] {DEBUG} update_database: #43 - Values in 'job_id' column are converted to integer data type.
+[2023-04-18 11:24:16,209] {DEBUG} update_database: #45 - Values in 'num_course_taken' column are converted to integer data type.
+[2023-04-18 11:24:16,209] {DEBUG} update_database: #47 - Values in 'current_career_path_id' column are converted to integer data type.
+[2023-04-18 11:24:16,209] {DEBUG} update_database: #49 - Column 'contact_info' is dropped.
+[2023-04-18 11:24:16,211] {DEBUG} update_database: #57 - New row 'career_path_id' = 0 is being created.
+[2023-04-18 11:24:16,213] {DEBUG} update_database: #65 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
+[2023-04-18 11:24:16,214] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 11:24:16,214] {INFO} objects: #107 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 11:24:16,248] {INFO} objects: #107 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 11:24:16,264] {INFO} objects: #107 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 11:24:16,277] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:24:16,277] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 11:24:16,278] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
+[2023-04-18 11:24:16,303] {INFO} objects: #98 - Setting up new table names..
+[2023-04-18 11:24:16,303] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:24:16,303] {DEBUG} update_database: #82 - Clean dataframes are merged into single one.
+[2023-04-18 11:24:16,311] {DEBUG} update_database: #87 - Merged dataframe is being exported into CSV File.
+[2023-04-18 11:24:16,345] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-18 11:24:16,345] {INFO} checks: #180 - New database file successfully found.
+[2023-04-18 11:24:16,346] {DEBUG} checks: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:24:16,346] {DEBUG} checks: #103 - Getting information report for table named as cademycode_students_new
+[2023-04-18 11:24:16,369] {INFO} checks: #66 - Number of rows: 5000
+[2023-04-18 11:24:16,369] {INFO} checks: #67 - Number of columns: 11
+[2023-04-18 11:24:16,369] {INFO} checks: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-18 11:24:16,369] {DEBUG} checks: #103 - Getting information report for table named as cademycode_courses_new
+[2023-04-18 11:24:16,370] {INFO} checks: #66 - Number of rows: 11
+[2023-04-18 11:24:16,370] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:24:16,370] {INFO} checks: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 11:24:16,370] {DEBUG} checks: #103 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-18 11:24:16,371] {INFO} checks: #66 - Number of rows: 10
+[2023-04-18 11:24:16,371] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:24:16,371] {INFO} checks: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 11:44:05,497] {DEBUG} objects: #62 - Checking if original database file exists...
+[2023-04-18 11:44:05,497] {INFO} checks: #180 - Original database file successfully found.
+[2023-04-18 11:44:05,497] {DEBUG} checks: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-18 11:44:05,497] {DEBUG} checks: #103 - Getting information report for table named as cademycode_students
+[2023-04-18 11:44:05,514] {INFO} checks: #66 - Number of rows: 5000
+[2023-04-18 11:44:05,514] {INFO} checks: #67 - Number of columns: 9
+[2023-04-18 11:44:05,514] {INFO} checks: #68 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-18 11:44:05,514] {DEBUG} checks: #103 - Getting information report for table named as cademycode_courses
+[2023-04-18 11:44:05,514] {INFO} checks: #66 - Number of rows: 10
+[2023-04-18 11:44:05,514] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:44:05,514] {INFO} checks: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 11:44:05,514] {DEBUG} checks: #103 - Getting information report for table named as cademycode_student_jobs
+[2023-04-18 11:44:05,514] {INFO} checks: #66 - Number of rows: 13
+[2023-04-18 11:44:05,514] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:44:05,514] {INFO} checks: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 11:44:05,529] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-18 11:44:05,529] {INFO} checks: #180 - New database file successfully found.
+[2023-04-18 11:44:05,529] {DEBUG} checks: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:44:05,530] {DEBUG} checks: #103 - Getting information report for table named as cademycode_students_new
+[2023-04-18 11:44:05,548] {INFO} checks: #66 - Number of rows: 5000
+[2023-04-18 11:44:05,548] {INFO} checks: #67 - Number of columns: 11
+[2023-04-18 11:44:05,548] {INFO} checks: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-18 11:44:05,548] {DEBUG} checks: #103 - Getting information report for table named as cademycode_courses_new
+[2023-04-18 11:44:05,548] {INFO} checks: #66 - Number of rows: 11
+[2023-04-18 11:44:05,548] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:44:05,548] {INFO} checks: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 11:44:05,548] {DEBUG} checks: #103 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-18 11:44:05,548] {INFO} checks: #66 - Number of rows: 10
+[2023-04-18 11:44:05,548] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:44:05,548] {INFO} checks: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 11:44:05,548] {DEBUG} checks: #91 - Checking for database updates...
+[2023-04-18 11:44:05,548] {INFO} checks: #158 - Updates made in the original database have been checked.
+[2023-04-18 11:44:05,548] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 11:44:05,548] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
+[2023-04-18 11:44:05,564] {INFO} objects: #98 - Setting up new table names..
+[2023-04-18 11:44:05,564] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-18 11:44:05,564] {DEBUG} update_database: #71 - Starting the process of data wrangling, cleaning, tidying.
+[2023-04-18 11:44:05,564] {DEBUG} update_database: #17 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
+[2023-04-18 11:44:05,564] {DEBUG} update_database: #19 - Median for column 'time_spent_hrs' is being calculated.
+[2023-04-18 11:44:05,564] {DEBUG} update_database: #21 - All NAN values in column 'time_spent_hrs' are filled by median value.
+[2023-04-18 11:44:05,564] {DEBUG} update_database: #23 - All NAN values in column 'current_career_path_id' are filled 0.
+[2023-04-18 11:44:05,564] {DEBUG} update_database: #25 - Median for column 'num_course_taken' is being calculated.
+[2023-04-18 11:44:05,564] {DEBUG} update_database: #27 - All NAN values in column 'num_course_taken' are filled by median value.
+[2023-04-18 11:44:05,564] {DEBUG} update_database: #29 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
+[2023-04-18 11:44:05,580] {DEBUG} update_database: #35 - Values in 'job_id' column are converted to numeric format.
+[2023-04-18 11:44:05,580] {DEBUG} update_database: #37 - Values in 'num_course_taken' column are converted to numeric format.
+[2023-04-18 11:44:05,598] {DEBUG} update_database: #39 - Values in 'current_career_path_id' column are converted to numeric format.
+[2023-04-18 11:44:05,598] {DEBUG} update_database: #41 - Values in 'time_spent_hrs' column are converted to numeric format.
+[2023-04-18 11:44:05,598] {DEBUG} update_database: #43 - Values in 'job_id' column are converted to integer data type.
+[2023-04-18 11:44:05,598] {DEBUG} update_database: #45 - Values in 'num_course_taken' column are converted to integer data type.
+[2023-04-18 11:44:05,598] {DEBUG} update_database: #47 - Values in 'current_career_path_id' column are converted to integer data type.
+[2023-04-18 11:44:05,598] {DEBUG} update_database: #49 - Column 'contact_info' is dropped.
+[2023-04-18 11:44:05,598] {DEBUG} update_database: #57 - New row 'career_path_id' = 0 is being created.
+[2023-04-18 11:44:05,598] {DEBUG} update_database: #65 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
+[2023-04-18 11:44:05,598] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 11:44:05,598] {INFO} objects: #107 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 11:44:05,648] {INFO} objects: #107 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 11:44:05,663] {INFO} objects: #107 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 11:44:05,676] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:44:05,676] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 11:44:05,676] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
+[2023-04-18 11:44:05,692] {INFO} objects: #98 - Setting up new table names..
+[2023-04-18 11:44:05,692] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:44:05,692] {DEBUG} update_database: #82 - Clean dataframes are merged into single one.
+[2023-04-18 11:44:05,709] {DEBUG} update_database: #87 - Merged dataframe is being exported into CSV File.
+[2023-04-18 11:44:05,729] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-18 11:44:05,729] {INFO} checks: #180 - New database file successfully found.
+[2023-04-18 11:44:05,729] {DEBUG} checks: #99 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 11:44:05,745] {DEBUG} checks: #103 - Getting information report for table named as cademycode_students_new
+[2023-04-18 11:44:05,765] {INFO} checks: #66 - Number of rows: 5000
+[2023-04-18 11:44:05,765] {INFO} checks: #67 - Number of columns: 11
+[2023-04-18 11:44:05,765] {INFO} checks: #68 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-18 11:44:05,765] {DEBUG} checks: #103 - Getting information report for table named as cademycode_courses_new
+[2023-04-18 11:44:05,765] {INFO} checks: #66 - Number of rows: 11
+[2023-04-18 11:44:05,765] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:44:05,765] {INFO} checks: #68 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 11:44:05,765] {DEBUG} checks: #103 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-18 11:44:05,765] {INFO} checks: #66 - Number of rows: 10
+[2023-04-18 11:44:05,765] {INFO} checks: #67 - Number of columns: 3
+[2023-04-18 11:44:05,765] {INFO} checks: #68 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 12:45:42,545] {DEBUG} objects: #62 - Checking if original database file exists...
+[2023-04-18 12:45:42,545] {INFO} check_functions: #179 - Original database file successfully found.
+[2023-04-18 12:45:42,545] {DEBUG} check_functions: #98 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-18 12:45:42,545] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_students
+[2023-04-18 12:45:42,564] {INFO} check_functions: #65 - Number of rows: 5000
+[2023-04-18 12:45:42,564] {INFO} check_functions: #66 - Number of columns: 9
+[2023-04-18 12:45:42,579] {INFO} check_functions: #67 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-18 12:45:42,579] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_courses
+[2023-04-18 12:45:42,580] {INFO} check_functions: #65 - Number of rows: 10
+[2023-04-18 12:45:42,580] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:45:42,580] {INFO} check_functions: #67 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 12:45:42,580] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_student_jobs
+[2023-04-18 12:45:42,581] {INFO} check_functions: #65 - Number of rows: 13
+[2023-04-18 12:45:42,581] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:45:42,581] {INFO} check_functions: #67 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 12:45:42,581] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-18 12:45:42,581] {INFO} check_functions: #179 - New database file successfully found.
+[2023-04-18 12:45:42,581] {DEBUG} check_functions: #98 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 12:45:42,581] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_students_new
+[2023-04-18 12:45:42,597] {INFO} check_functions: #65 - Number of rows: 5000
+[2023-04-18 12:45:42,597] {INFO} check_functions: #66 - Number of columns: 11
+[2023-04-18 12:45:42,597] {INFO} check_functions: #67 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-18 12:45:42,597] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_courses_new
+[2023-04-18 12:45:42,597] {INFO} check_functions: #65 - Number of rows: 11
+[2023-04-18 12:45:42,597] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:45:42,597] {INFO} check_functions: #67 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 12:45:42,597] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-18 12:45:42,597] {INFO} check_functions: #65 - Number of rows: 10
+[2023-04-18 12:45:42,597] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:45:42,597] {INFO} check_functions: #67 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 12:45:42,597] {DEBUG} check_functions: #90 - Checking for database updates...
+[2023-04-18 12:45:42,597] {INFO} check_functions: #157 - Updates made in the original database have been checked.
+[2023-04-18 12:45:42,597] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 12:45:42,597] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
+[2023-04-18 12:45:42,624] {INFO} objects: #98 - Setting up new table names..
+[2023-04-18 12:45:42,624] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-18 12:45:42,624] {DEBUG} update_database: #71 - Starting the process of data wrangling, cleaning, tidying.
+[2023-04-18 12:45:42,624] {DEBUG} update_database: #17 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
+[2023-04-18 12:45:42,624] {DEBUG} update_database: #19 - Median for column 'time_spent_hrs' is being calculated.
+[2023-04-18 12:45:42,624] {DEBUG} update_database: #21 - All NAN values in column 'time_spent_hrs' are filled by median value.
+[2023-04-18 12:45:42,624] {DEBUG} update_database: #23 - All NAN values in column 'current_career_path_id' are filled 0.
+[2023-04-18 12:45:42,624] {DEBUG} update_database: #25 - Median for column 'num_course_taken' is being calculated.
+[2023-04-18 12:45:42,624] {DEBUG} update_database: #27 - All NAN values in column 'num_course_taken' are filled by median value.
+[2023-04-18 12:45:42,624] {DEBUG} update_database: #29 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
+[2023-04-18 12:45:42,646] {DEBUG} update_database: #35 - Values in 'job_id' column are converted to numeric format.
+[2023-04-18 12:45:42,646] {DEBUG} update_database: #37 - Values in 'num_course_taken' column are converted to numeric format.
+[2023-04-18 12:45:42,646] {DEBUG} update_database: #39 - Values in 'current_career_path_id' column are converted to numeric format.
+[2023-04-18 12:45:42,646] {DEBUG} update_database: #41 - Values in 'time_spent_hrs' column are converted to numeric format.
+[2023-04-18 12:45:42,646] {DEBUG} update_database: #43 - Values in 'job_id' column are converted to integer data type.
+[2023-04-18 12:45:42,646] {DEBUG} update_database: #45 - Values in 'num_course_taken' column are converted to integer data type.
+[2023-04-18 12:45:42,646] {DEBUG} update_database: #47 - Values in 'current_career_path_id' column are converted to integer data type.
+[2023-04-18 12:45:42,646] {DEBUG} update_database: #49 - Column 'contact_info' is dropped.
+[2023-04-18 12:45:42,646] {DEBUG} update_database: #57 - New row 'career_path_id' = 0 is being created.
+[2023-04-18 12:45:42,646] {DEBUG} update_database: #65 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
+[2023-04-18 12:45:42,662] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 12:45:42,662] {INFO} objects: #107 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 12:45:42,701] {INFO} objects: #107 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 12:45:42,739] {INFO} objects: #107 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 12:45:42,811] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 12:45:42,811] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 12:45:42,812] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
+[2023-04-18 12:45:42,853] {INFO} objects: #98 - Setting up new table names..
+[2023-04-18 12:45:42,853] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 12:45:42,853] {DEBUG} update_database: #82 - Clean dataframes are merged into single one.
+[2023-04-18 12:45:42,854] {DEBUG} update_database: #87 - Merged dataframe is being exported into CSV File.
+[2023-04-18 12:45:42,883] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-18 12:45:42,883] {INFO} check_functions: #179 - New database file successfully found.
+[2023-04-18 12:45:42,883] {DEBUG} check_functions: #98 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 12:45:42,883] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_students_new
+[2023-04-18 12:45:42,917] {INFO} check_functions: #65 - Number of rows: 5000
+[2023-04-18 12:45:42,917] {INFO} check_functions: #66 - Number of columns: 11
+[2023-04-18 12:45:42,917] {INFO} check_functions: #67 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-18 12:45:42,917] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_courses_new
+[2023-04-18 12:45:42,920] {INFO} check_functions: #65 - Number of rows: 11
+[2023-04-18 12:45:42,920] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:45:42,920] {INFO} check_functions: #67 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 12:45:42,920] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-18 12:45:42,920] {INFO} check_functions: #65 - Number of rows: 10
+[2023-04-18 12:45:42,920] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:45:42,920] {INFO} check_functions: #67 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 12:46:06,673] {DEBUG} objects: #62 - Checking if original database file exists...
+[2023-04-18 12:46:06,673] {INFO} check_functions: #179 - Original database file successfully found.
+[2023-04-18 12:46:06,673] {DEBUG} check_functions: #98 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-18 12:46:06,673] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_students
+[2023-04-18 12:46:06,710] {INFO} check_functions: #65 - Number of rows: 5000
+[2023-04-18 12:46:06,710] {INFO} check_functions: #66 - Number of columns: 9
+[2023-04-18 12:46:06,710] {INFO} check_functions: #67 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-18 12:46:06,710] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_courses
+[2023-04-18 12:46:06,711] {INFO} check_functions: #65 - Number of rows: 10
+[2023-04-18 12:46:06,711] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:46:06,711] {INFO} check_functions: #67 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 12:46:06,711] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_student_jobs
+[2023-04-18 12:46:06,711] {INFO} check_functions: #65 - Number of rows: 13
+[2023-04-18 12:46:06,712] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:46:06,712] {INFO} check_functions: #67 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 12:46:06,712] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-18 12:46:06,712] {INFO} check_functions: #179 - New database file successfully found.
+[2023-04-18 12:46:06,712] {DEBUG} check_functions: #98 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 12:46:06,712] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_students_new
+[2023-04-18 12:46:06,743] {INFO} check_functions: #65 - Number of rows: 5000
+[2023-04-18 12:46:06,743] {INFO} check_functions: #66 - Number of columns: 11
+[2023-04-18 12:46:06,744] {INFO} check_functions: #67 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-18 12:46:06,744] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_courses_new
+[2023-04-18 12:46:06,745] {INFO} check_functions: #65 - Number of rows: 11
+[2023-04-18 12:46:06,745] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:46:06,745] {INFO} check_functions: #67 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 12:46:06,745] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-18 12:46:06,746] {INFO} check_functions: #65 - Number of rows: 10
+[2023-04-18 12:46:06,746] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:46:06,746] {INFO} check_functions: #67 - Table has columns: job_id, job_category, avg_salary
+[2023-04-18 12:46:06,748] {DEBUG} check_functions: #90 - Checking for database updates...
+[2023-04-18 12:46:06,749] {INFO} check_functions: #157 - Updates made in the original database have been checked.
+[2023-04-18 12:46:06,749] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 12:46:06,749] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
+[2023-04-18 12:46:06,776] {INFO} objects: #98 - Setting up new table names..
+[2023-04-18 12:46:06,776] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-18 12:46:06,777] {DEBUG} update_database: #71 - Starting the process of data wrangling, cleaning, tidying.
+[2023-04-18 12:46:06,777] {DEBUG} update_database: #17 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
+[2023-04-18 12:46:06,779] {DEBUG} update_database: #19 - Median for column 'time_spent_hrs' is being calculated.
+[2023-04-18 12:46:06,779] {DEBUG} update_database: #21 - All NAN values in column 'time_spent_hrs' are filled by median value.
+[2023-04-18 12:46:06,781] {DEBUG} update_database: #23 - All NAN values in column 'current_career_path_id' are filled 0.
+[2023-04-18 12:46:06,782] {DEBUG} update_database: #25 - Median for column 'num_course_taken' is being calculated.
+[2023-04-18 12:46:06,783] {DEBUG} update_database: #27 - All NAN values in column 'num_course_taken' are filled by median value.
+[2023-04-18 12:46:06,784] {DEBUG} update_database: #29 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
+[2023-04-18 12:46:06,809] {DEBUG} update_database: #35 - Values in 'job_id' column are converted to numeric format.
+[2023-04-18 12:46:06,812] {DEBUG} update_database: #37 - Values in 'num_course_taken' column are converted to numeric format.
+[2023-04-18 12:46:06,815] {DEBUG} update_database: #39 - Values in 'current_career_path_id' column are converted to numeric format.
+[2023-04-18 12:46:06,818] {DEBUG} update_database: #41 - Values in 'time_spent_hrs' column are converted to numeric format.
+[2023-04-18 12:46:06,822] {DEBUG} update_database: #43 - Values in 'job_id' column are converted to integer data type.
+[2023-04-18 12:46:06,823] {DEBUG} update_database: #45 - Values in 'num_course_taken' column are converted to integer data type.
+[2023-04-18 12:46:06,823] {DEBUG} update_database: #47 - Values in 'current_career_path_id' column are converted to integer data type.
+[2023-04-18 12:46:06,824] {DEBUG} update_database: #49 - Column 'contact_info' is dropped.
+[2023-04-18 12:46:06,826] {DEBUG} update_database: #57 - New row 'career_path_id' = 0 is being created.
+[2023-04-18 12:46:06,826] {DEBUG} update_database: #65 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
+[2023-04-18 12:46:06,829] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 12:46:06,829] {INFO} objects: #107 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 12:46:06,866] {INFO} objects: #107 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 12:46:06,876] {INFO} objects: #107 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-18 12:46:06,885] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 12:46:06,886] {INFO} objects: #87 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-18 12:46:06,886] {INFO} objects: #90 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
+[2023-04-18 12:46:06,917] {INFO} objects: #98 - Setting up new table names..
+[2023-04-18 12:46:06,917] {INFO} objects: #114 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 12:46:06,917] {DEBUG} update_database: #82 - Clean dataframes are merged into single one.
+[2023-04-18 12:46:06,925] {DEBUG} update_database: #87 - Merged dataframe is being exported into CSV File.
+[2023-04-18 12:46:06,970] {DEBUG} objects: #62 - Checking if new database file exists...
+[2023-04-18 12:46:06,970] {INFO} check_functions: #179 - New database file successfully found.
+[2023-04-18 12:46:06,970] {DEBUG} check_functions: #98 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-18 12:46:06,971] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_students_new
+[2023-04-18 12:46:06,993] {INFO} check_functions: #65 - Number of rows: 5000
+[2023-04-18 12:46:06,993] {INFO} check_functions: #66 - Number of columns: 11
+[2023-04-18 12:46:06,993] {INFO} check_functions: #67 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-18 12:46:06,993] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_courses_new
+[2023-04-18 12:46:06,993] {INFO} check_functions: #65 - Number of rows: 11
+[2023-04-18 12:46:06,993] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:46:06,993] {INFO} check_functions: #67 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-18 12:46:06,993] {DEBUG} check_functions: #102 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-18 12:46:06,999] {INFO} check_functions: #65 - Number of rows: 10
+[2023-04-18 12:46:06,999] {INFO} check_functions: #66 - Number of columns: 3
+[2023-04-18 12:46:06,999] {INFO} check_functions: #67 - Table has columns: job_id, job_category, avg_salary
