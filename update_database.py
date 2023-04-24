@@ -31,7 +31,7 @@ def df_students_updates(df):
     df_new['contact_info'] = df_new.contact_info.apply(lambda x: json.loads(x))
     df_new['address'] = df_new.contact_info.map(lambda q: q['mailing_address'])
     df_new['email'] = df_new.contact_info.map(lambda q: q['email'])
-    df_new['state'] = df_new.address.map(lambda q: q.split(',')[2])
+    df_new['state'] = df_new.address.map(lambda q: q.split(',')[2].strip())
     logger.debug("Values in 'job_id' column are converted to numeric format.")
     df_new.job_id = pd.to_numeric(df_new.job_id)
     logger.debug("Values in 'num_course_taken' column are converted to numeric format.")
@@ -90,6 +90,7 @@ def join_dfs(new_df_dict):
 
 def export_df(df):
     df.to_csv("./subscriber-pipeline-starter-kit/dev/combined_file.csv")
+
 
 df_students_new_cols = {'uuid': 'INTEGER',
                         'name': 'VARCHAR',

@@ -1,0 +1,2 @@
+[2023-04-20 11:59:18,703] {ERROR} check_errors: #179 - New database does not exist yet. Creating a new file.
+[2023-04-20 11:59:18,704] {WARNING} check_errors: #135 - New database is probably empty and no data are available.

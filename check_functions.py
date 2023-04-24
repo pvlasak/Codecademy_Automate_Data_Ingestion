@@ -7,7 +7,7 @@ import logging
 logger_changes = logging.getLogger(__name__)
 logger_changes.setLevel(logging.DEBUG)
 
-logger_errors = logging.getLogger("unit_testing_errors")
+logger_errors = logging.getLogger("check_errors")
 logger_errors.setLevel(logging.WARNING)
 
 formatter = logging.Formatter("[%(asctime)s] {%(levelname)s} %(name)s: #%(lineno)d - %(message)s")
@@ -16,7 +16,7 @@ file_handler = logging.FileHandler("changes.log")
 file_handler.setFormatter(formatter)
 logger_changes.addHandler(file_handler)
 
-file_handler_err = logging.FileHandler("unit_tests_error.log")
+file_handler_err = logging.FileHandler("check_errors.log")
 file_handler_err.setFormatter(formatter)
 logger_errors.addHandler(file_handler_err)
 
@@ -85,6 +85,7 @@ def create_named_tuple(db, cols, name):
 
 def get_intersection(orig_set, new_set):
     logger_changes.debug("Checking for database updates...")
+#    orig_set.remove('shonda_stephanin4439@coldmail.com')
     only_in_orig = orig_set.difference(new_set)
     only_in_new = new_set.difference(orig_set)
     return only_in_orig, only_in_new
@@ -177,3 +178,4 @@ def log_check_db_path(check_result):
     else:
         logger_changes.log(logging.DEBUG, f'{check_result[0].title()} database does not exist yet. Creating a new file.')
         logger_errors.log(logging.ERROR, f'{check_result[0].title()} database does not exist yet. Creating a new file.')
+

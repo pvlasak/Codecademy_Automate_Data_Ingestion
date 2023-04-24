@@ -2,6 +2,10 @@ import sqlite3
 import pandas as pd
 import logging
 import os
+from functools import reduce
+import csv
+from collections import namedtuple
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -24,6 +28,10 @@ class Database:
         self.table_names = []
         self.new_tables = []
         self.new_table_names = []
+        if os.path.isfile(self.path) is False:
+            self.size = 0
+        else:
+            self.size = os.path.getsize(self.path)
 
     def get_connection(self):
         self.con = sqlite3.connect(self.path)
@@ -65,6 +73,9 @@ class Database:
         else:
             return self.name, False
 
+    def get_file_size(self):
+        return os.path.getsize(self.path)
+
 
 class Dataframe:
     def __init__(self, table_name, conn):
@@ -75,6 +86,10 @@ class Dataframe:
     def get_data(self):
         self.df = pd.read_sql_query(f"SELECT * FROM {self.table_name}", con=self.conn)
         return self.df
+
+    def get_nan_value_count(self):
+        nan_count = reduce(lambda x, y: x+y, self.df.isna().sum().to_list())
+        return nan_count
 
 
 class DataTransfer(Database, Dataframe):
@@ -112,4 +127,25 @@ class DataTransfer(Database, Dataframe):
         self.connection.commit()
         self.connection.close()
         logger.info(f"Closing connection to database {self.db.path}.")
+
+
+class FinalCSVReader:
+    def __init__(self, file):
+        self.file = file
+        self.opened_file = None
+        self.mapper = None
+
+    def __enter__(self):
+        self.opened_file = open(self.file, newline='')
+        reader = csv.reader(self.opened_file, delimiter=',')
+        csv_tuple = namedtuple("csv_tuple", next(reader)[1:])
+        self.mapper = map(lambda line: csv_tuple(int(line[1]), str(line[2]), str(line[3]),
+                                            str(line[4]), int(line[5]), float(line[6]),
+                                            str(line[7]), str(line[8]), str(line[9]),
+                                            str(line[10]), int(line[11]), str(line[12]),
+                                            int(line[13])), reader)
+        return self.mapper
+
+    def __exit__(self, *exc):
+        self.opened_file.close()
 
