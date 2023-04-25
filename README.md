@@ -14,7 +14,7 @@ Python packages can be installed as follows:
 pip install -r requirements.txt
 
 ## File Description
-`automated_data_ingestion.py:` main python file \
+`automated_data_ingestion.py:` main python file\
 	- reads data from original source\
 	- checks for new and removed lines\
 	- establishing data trasfer for download from original database to Pandas dataframe\
@@ -24,7 +24,7 @@ pip install -r requirements.txt
 	- exporting final CSV
 
 `check_functions.py:`
-	- context manager for connecting to sqlite database via python \ 
+	- context manager for connecting to sqlite database via python \
 	- function creating a named tuple container \
 	- class TableInfo collecting the information about the database \
 	- function checking for new and removed lines in original database \
@@ -42,14 +42,14 @@ pip install -r requirements.txt
  	- unit tests checking the process of database update \
 	- can be executed individually after the database update. \
 		- testing if original and new database has same number of rows for student table. \
-		- testing if the row sequence is same in both databases for table containing student data. \ 
+		- testing if the row sequence is same in both databases for table containing student data. \
 		- testing the total number of tables in database\
 		- testing the number of rows and columns in both databases. \
 		- testing the occurence of nan values in an updated database\
-		- testing if the database file path exists. \ 
+		- testing if the database file path exists. \
 		- testing if updated database file has size > 0 bytes. \
 		- testing if there are any new or removed lines in original database. \
-		- testing the number of rows and columns in csv file. \ 
+		- testing the number of rows and columns in csv file. \
 
 
 `changes.log:`
@@ -63,13 +63,13 @@ pip install -r requirements.txt
 
 Database update can be initialized in terminal by starting the command: "python3 ./automated_data_ingestion.py"
 
-Update process can be tracked in files `changes.log` and `check_errors.log`
+Update process can be tracked in files `changes.log` and `check_errors.log` \
 
 Output files are following:
 	a] "./subscriber-pipeline-starter-kit/dev/cademycode_updated.db"\
-		clean database
+		clean database \
 	b] "./subscriber-pipeline-starter-kit/dev/combined_file.csv"\
 		merged tabular data from clean database
 
-To protect the process of database update the unit testing sequence can be started anytime:
+To protect the process of database update the unit testing sequence can be started anytime:\
 	"python3 ./unit_tests.py -v"
