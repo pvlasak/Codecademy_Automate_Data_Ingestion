@@ -50,15 +50,10 @@ pip install -r requirements.txt
 		- testing if updated database file has size > 0 bytes. \
 		- testing if there are any new or removed lines in original database. \
 		- testing the number of rows and columns in csv file. \
-
-
 `changes.log:`
 	- contains the info and debug logs regarding update\
-
 `check_errors.log:`
 	- contains the warning and error logs regarding update. \
-
-
 ## Initialization of Automated Data Ingestion
 
 Database update can be initialized in terminal by starting the command: \
