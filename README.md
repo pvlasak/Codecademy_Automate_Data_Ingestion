@@ -21,35 +21,35 @@ pip install -r requirements.txt
 	- update dataframe data\
 	- establishing data trasfer for upload to an updated database\
 	- merging clean tabular data\
-	- exporting final CSV\
+	- exporting final CSV
 
 `check_functions.py:`
-	- context manager for connecting to sqlite database via python\ 
-	- function creating a named tuple container\
-	- class TableInfo collecting the information about the database\
-	- function checking for new and removed lines in original database\
-	- function checking for equal number of rows for table containing student records\
-	- function checking the row sequence for original and new table containing information about students.\
-	- logging module is used. \
+	- context manager for connecting to sqlite database via python \ 
+	- function creating a named tuple container \
+	- class TableInfo collecting the information about the database \
+	- function checking for new and removed lines in original database \
+	- function checking for equal number of rows for table containing student records \
+	- function checking the row sequence for original and new table containing information about students. \
+	- logging module is used. 
 
 `objects.py:` 
 	- class Database incl. methods\
 	- class Dataframe incl. methods\
 	- class DataTransfer incl. methods\
- 	- class FinalCSVReader incl. methods\
+ 	- class FinalCSVReader incl. methods
 
 `unit_tests.py:`
- 	- unit tests checking the process of database update
+ 	- unit tests checking the process of database update \
 	- can be executed individually after the database update. \
 		- testing if original and new database has same number of rows for student table. \
-		- testing if the row sequence is same in both databases for table containing student data.\ 
+		- testing if the row sequence is same in both databases for table containing student data. \ 
 		- testing the total number of tables in database\
 		- testing the number of rows and columns in both databases. \
 		- testing the occurence of nan values in an updated database\
-		- testing if the database file path exists.\ 
-		- testing if updated database file has size > 0 bytes.\
-		- testing if there are any new or removed lines in original database.\
-		- testing the number of rows and columns in csv file.\ 
+		- testing if the database file path exists. \ 
+		- testing if updated database file has size > 0 bytes. \
+		- testing if there are any new or removed lines in original database. \
+		- testing the number of rows and columns in csv file. \ 
 
 
 `changes.log:`
