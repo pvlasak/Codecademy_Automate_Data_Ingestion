@@ -17,28 +17,28 @@ pip install -r requirements.txt
 `automated_data_ingestion.py:` main python file\
 	- reads data from original source\
 	- checks for new and removed lines\
-	- establishing data trasfer for download from original database to Pandas dataframe\
+	- establishing data transfer pipeline for download from original database to Pandas dataframe\
 	- update dataframe data\
-	- establishing data trasfer for upload to an updated database\
+	- establishing data transfer pipeline for upload to an updated database\
 	- merging clean tabular data\
 	- exporting final CSV
 
-`check_functions.py:`
+`check_functions.py:`\
 	- context manager for connecting to sqlite database via python \
 	- function creating a named tuple container \
 	- class TableInfo collecting the information about the database \
 	- function checking for new and removed lines in original database \
 	- function checking for equal number of rows for table containing student records \
-	- function checking the row sequence for original and new table containing information about students. \
+	- function checking the row sequence for original and new table containing student records\
 	- logging module is used. 
 
-`objects.py:` 
+`objects.py:` \
 	- class Database incl. methods\
 	- class Dataframe incl. methods\
 	- class DataTransfer incl. methods\
  	- class FinalCSVReader incl. methods
 
-`unit_tests.py:`
+`unit_tests.py:`\
  	- unit tests checking the process of database update \
 	- can be executed individually after the database update. \
 		- testing if original and new database has same number of rows for student table. \
@@ -61,11 +61,12 @@ pip install -r requirements.txt
 
 ## Initialization of Automated Data Ingestion
 
-Database update can be initialized in terminal by starting the command: "python3 ./automated_data_ingestion.py"
+Database update can be initialized in terminal by starting the command: \
+"python3 ./automated_data_ingestion.py"
 
 Update process can be tracked in files `changes.log` and `check_errors.log` \
 
-Output files are following:
+Output files are following:\
 	a] "./subscriber-pipeline-starter-kit/dev/cademycode_updated.db"\
 		clean database \
 	b] "./subscriber-pipeline-starter-kit/dev/combined_file.csv"\
