@@ -19,14 +19,12 @@ class DatabaseTestsClass(unittest.TestCase):
     def test_db_length(self):
         orig_info = check_db(orig_db_path)
         new_info = check_db(new_db_path)
-        logger.debug('Testing database length after update...')
         message = 'Original and updated database have not same number of rows.'
         self.assertTrue(compare_db_length(orig_info, new_info), message)
 
     def test_db_row_sequence(self):
         orig_info = check_db(orig_db_path)
         new_info = check_db(new_db_path)
-        logger.debug('Testing database row sequence after update...')
         message = 'Original and updated database have different row sequence!'
         self.assertTrue(compare_row_sequence(orig_info, new_info), message)
 

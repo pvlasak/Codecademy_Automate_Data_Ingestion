@@ -44,7 +44,6 @@ if __name__ == '__main__':
     orig_db_info = check_path_and_load_data("original", orig_db_path)
     new_db_info = check_path_and_load_data("new", new_db_path)
     new_students, removed_students = check_students(orig_db_info, new_db_info)
-    print(new_students, removed_students)
     orig_dataframes, new_table_names = download_db("original", orig_db_path)
     new_dataframes = update_data(orig_dataframes, new_table_names)
     upload_to_db("new", new_db_path, new_dataframes, new_table_names)
@@ -52,6 +51,3 @@ if __name__ == '__main__':
     updated_dataframes, _ = download_db("new", new_db_path)
     df_merged = join_dfs(updated_dataframes)
     export_df(df_merged)
-
-    with FinalCSVReader("./subscriber-pipeline-starter-kit/dev/combined_file.csv") as csv_mapper:
-        print(len(tuple(csv_mapper)))

@@ -4631,3 +4631,518 @@
 [2023-04-24 15:44:25,565] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
 [2023-04-24 15:44:25,566] {DEBUG} check_functions: #87 - Checking for database updates...
 [2023-04-24 15:44:25,567] {INFO} check_functions: #155 - Updates made in the original database have been checked.
+[2023-04-25 14:16:30,075] {DEBUG} objects: #70 - Checking if original database file exists...
+[2023-04-25 14:16:30,076] {INFO} check_functions: #177 - Original database file successfully found.
+[2023-04-25 14:16:30,078] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 14:16:30,079] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 14:16:30,157] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 14:16:30,157] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 14:16:30,157] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 14:16:30,157] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 14:16:30,157] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 14:16:30,157] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 14:16:30,157] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 14:16:30,157] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 14:16:30,157] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 14:16:30,157] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 14:16:30,157] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 14:16:30,157] {DEBUG} objects: #70 - Checking if new database file exists...
+[2023-04-25 14:16:30,157] {INFO} check_functions: #177 - New database file successfully found.
+[2023-04-25 14:16:30,161] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 14:16:30,162] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 14:16:30,241] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 14:16:30,242] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 14:16:30,242] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 14:16:30,242] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 14:16:30,242] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 14:16:30,242] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 14:16:30,242] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 14:16:30,242] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 14:16:30,242] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 14:16:30,242] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 14:16:30,242] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 14:16:30,242] {DEBUG} check_functions: #87 - Checking for database updates...
+[2023-04-25 14:16:30,242] {INFO} check_functions: #155 - Updates made in the original database have been checked.
+[2023-04-25 14:16:30,242] {INFO} objects: #102 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-25 14:16:30,242] {INFO} objects: #105 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode.db...
+[2023-04-25 14:16:30,306] {INFO} objects: #113 - Setting up new table names..
+[2023-04-25 14:16:30,307] {INFO} objects: #129 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 14:16:30,307] {DEBUG} update_database: #71 - Starting the process of data wrangling, cleaning, tidying.
+[2023-04-25 14:16:30,308] {DEBUG} update_database: #17 - All NAN values in 'job_id' column are being replaced by 0 -> 'other' job category.
+[2023-04-25 14:16:30,308] {DEBUG} update_database: #19 - Median for column 'time_spent_hrs' is being calculated.
+[2023-04-25 14:16:30,313] {DEBUG} update_database: #21 - All NAN values in column 'time_spent_hrs' are filled by median value.
+[2023-04-25 14:16:30,313] {DEBUG} update_database: #23 - All NAN values in column 'current_career_path_id' are filled 0.
+[2023-04-25 14:16:30,313] {DEBUG} update_database: #25 - Median for column 'num_course_taken' is being calculated.
+[2023-04-25 14:16:30,313] {DEBUG} update_database: #27 - All NAN values in column 'num_course_taken' are filled by median value.
+[2023-04-25 14:16:30,313] {DEBUG} update_database: #29 - Values from 'contact_info' are retrieved and saved as the newcolumns named as 'address', 'email' and 'state'
+[2023-04-25 14:16:30,347] {DEBUG} update_database: #35 - Values in 'job_id' column are converted to numeric format.
+[2023-04-25 14:16:30,347] {DEBUG} update_database: #37 - Values in 'num_course_taken' column are converted to numeric format.
+[2023-04-25 14:16:30,347] {DEBUG} update_database: #39 - Values in 'current_career_path_id' column are converted to numeric format.
+[2023-04-25 14:16:30,347] {DEBUG} update_database: #41 - Values in 'time_spent_hrs' column are converted to numeric format.
+[2023-04-25 14:16:30,347] {DEBUG} update_database: #43 - Values in 'job_id' column are converted to integer data type.
+[2023-04-25 14:16:30,360] {DEBUG} update_database: #45 - Values in 'num_course_taken' column are converted to integer data type.
+[2023-04-25 14:16:30,360] {DEBUG} update_database: #47 - Values in 'current_career_path_id' column are converted to integer data type.
+[2023-04-25 14:16:30,361] {DEBUG} update_database: #49 - Column 'contact_info' is dropped.
+[2023-04-25 14:16:30,363] {DEBUG} update_database: #57 - New row 'career_path_id' = 0 is being created.
+[2023-04-25 14:16:30,364] {DEBUG} update_database: #65 - Duplicated rows in dataframe 'df_student_jobs' are dropped.
+[2023-04-25 14:16:30,364] {INFO} objects: #102 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-25 14:16:30,364] {INFO} objects: #122 - Uploading table cademycode_students_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-25 14:16:30,419] {INFO} objects: #122 - Uploading table cademycode_courses_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-25 14:16:30,438] {INFO} objects: #122 - Uploading table cademycode_student_jobs_new to SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db..
+[2023-04-25 14:16:30,456] {INFO} objects: #129 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 14:16:30,456] {INFO} objects: #102 - Establishing data transfer pipeline between database and dataframe...
+[2023-04-25 14:16:30,456] {INFO} objects: #105 - Downloading tables from SQL Database: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db...
+[2023-04-25 14:16:30,485] {INFO} objects: #113 - Setting up new table names..
+[2023-04-25 14:16:30,485] {INFO} objects: #129 - Closing connection to database ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 14:16:30,485] {DEBUG} update_database: #82 - Clean dataframes are merged into single one.
+[2023-04-25 14:16:30,495] {DEBUG} update_database: #87 - Merged dataframe is being exported into CSV File.
+[2023-04-25 15:09:42,346] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:42,346] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:42,387] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:42,387] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:42,387] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:42,387] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:42,387] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:42,387] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,387] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:42,387] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:42,387] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:42,387] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,387] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:42,387] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:09:42,390] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:09:42,413] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:42,413] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:09:42,413] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:09:42,413] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:09:42,413] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:09:42,413] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,413] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:42,413] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:09:42,413] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:42,413] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,413] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:42,418] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:42,418] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:42,452] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:42,452] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:42,452] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:42,452] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:42,453] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:42,453] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,453] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:42,453] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:42,453] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:42,453] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,453] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:42,453] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:09:42,453] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:09:42,464] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:42,464] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:09:42,464] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:09:42,464] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:09:42,464] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:09:42,464] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,464] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:42,464] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:09:42,464] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:42,464] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,464] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:42,515] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:09:42,515] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:09:42,531] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:42,531] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:09:42,531] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:09:42,531] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:09:42,531] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:09:42,531] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,531] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:42,531] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:09:42,531] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:42,531] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,531] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:42,531] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:09:42,531] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:09:42,566] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:42,566] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:09:42,566] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:09:42,566] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:09:42,566] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:09:42,566] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,566] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:42,566] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:09:42,566] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:42,566] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,566] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:42,566] {DEBUG} objects: #70 - Checking if new database file exists...
+[2023-04-25 15:09:42,569] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:42,570] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:42,600] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:42,600] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:42,600] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:42,600] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:42,600] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:42,600] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,600] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:42,600] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:42,600] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:42,600] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,600] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:42,600] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:42,600] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:42,648] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:42,648] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:42,648] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:42,648] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:42,648] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:42,648] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,648] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:42,648] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:42,648] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:42,648] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,648] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:42,681] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:42,681] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:42,700] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:42,700] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:42,700] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:42,700] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:42,716] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:42,716] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,716] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:42,716] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:42,717] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:42,717] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,717] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:42,719] {DEBUG} objects: #70 - Checking if original database file exists...
+[2023-04-25 15:09:42,719] {INFO} check_functions: #177 - Original database file successfully found.
+[2023-04-25 15:09:42,719] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:42,719] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:42,748] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:42,748] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:42,748] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:42,748] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:42,748] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:42,748] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,748] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:42,748] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:42,748] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:42,748] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,748] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:42,748] {DEBUG} objects: #70 - Checking if new database file exists...
+[2023-04-25 15:09:42,748] {INFO} check_functions: #177 - New database file successfully found.
+[2023-04-25 15:09:42,748] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:09:42,748] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:09:42,765] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:42,765] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:09:42,765] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:09:42,765] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:09:42,765] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:09:42,765] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,765] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:42,765] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:09:42,765] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:42,765] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:42,765] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:42,765] {DEBUG} check_functions: #87 - Checking for database updates...
+[2023-04-25 15:09:42,765] {INFO} check_functions: #155 - Updates made in the original database have been checked.
+[2023-04-25 15:09:49,892] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:49,892] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:49,913] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:49,913] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:49,913] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:49,913] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:49,913] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:49,913] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:49,913] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:49,913] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:49,913] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:49,913] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:49,913] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:49,929] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:09:49,929] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:09:49,953] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:49,953] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:09:49,953] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:09:49,953] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:09:49,954] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:09:49,954] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:49,954] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:49,954] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:09:49,954] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:49,954] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:49,954] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:49,957] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:49,957] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:49,989] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:49,989] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:49,989] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:49,989] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:49,989] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:49,989] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:49,989] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:49,989] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:49,989] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:49,989] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:49,989] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:49,989] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:09:49,989] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:09:50,013] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:50,013] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:09:50,013] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:09:50,013] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:09:50,013] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:09:50,013] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,013] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:50,013] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:09:50,013] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:50,013] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,013] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:50,053] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:09:50,053] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:09:50,064] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:50,064] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:09:50,064] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:09:50,064] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:09:50,064] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:09:50,064] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,064] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:50,064] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:09:50,064] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:50,064] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,064] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:50,079] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:09:50,079] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:09:50,105] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:50,105] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:09:50,105] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:09:50,105] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:09:50,105] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:09:50,105] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,105] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:50,105] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:09:50,105] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:50,105] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,105] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:50,108] {DEBUG} objects: #70 - Checking if new database file exists...
+[2023-04-25 15:09:50,109] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:50,110] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:50,137] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:50,137] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:50,137] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:50,137] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:50,137] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:50,137] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,137] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:50,137] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:50,137] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:50,137] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,137] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:50,148] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:50,148] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:50,198] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:50,198] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:50,198] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:50,199] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:50,200] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:50,200] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,200] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:50,200] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:50,200] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:50,200] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,200] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:50,230] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:50,230] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:50,267] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:50,267] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:50,267] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:50,267] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:50,267] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:50,267] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,267] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:50,267] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:50,273] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:50,273] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,273] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:50,275] {DEBUG} objects: #70 - Checking if original database file exists...
+[2023-04-25 15:09:50,275] {INFO} check_functions: #177 - Original database file successfully found.
+[2023-04-25 15:09:50,275] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:09:50,276] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:09:50,310] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:50,311] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:09:50,311] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:09:50,311] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:09:50,312] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:50,312] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,312] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:50,312] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:09:50,312] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:09:50,312] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,312] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:50,313] {DEBUG} objects: #70 - Checking if new database file exists...
+[2023-04-25 15:09:50,313] {INFO} check_functions: #177 - New database file successfully found.
+[2023-04-25 15:09:50,313] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:09:50,313] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:09:50,338] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:09:50,338] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:09:50,339] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:09:50,339] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:09:50,339] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:09:50,339] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,339] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:09:50,339] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:09:50,339] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:09:50,339] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:09:50,339] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:09:50,339] {DEBUG} check_functions: #87 - Checking for database updates...
+[2023-04-25 15:09:50,339] {INFO} check_functions: #155 - Updates made in the original database have been checked.
+[2023-04-25 15:11:19,180] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:11:19,180] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:11:19,212] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:11:19,212] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:11:19,212] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:11:19,212] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:11:19,212] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:11:19,212] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,212] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:11:19,212] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:11:19,212] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:11:19,212] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,212] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:11:19,212] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:11:19,212] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:11:19,244] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:11:19,244] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:11:19,244] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:11:19,244] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:11:19,245] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:11:19,245] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,245] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:11:19,245] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:11:19,245] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:11:19,246] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,246] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:11:19,248] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:11:19,248] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:11:19,277] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:11:19,277] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:11:19,277] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:11:19,277] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:11:19,277] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:11:19,277] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,277] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:11:19,277] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:11:19,277] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:11:19,277] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,277] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:11:19,277] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:11:19,277] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:11:19,305] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:11:19,305] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:11:19,305] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:11:19,305] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:11:19,305] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:11:19,305] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,305] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:11:19,305] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:11:19,305] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:11:19,305] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,305] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:11:19,348] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:11:19,348] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:11:19,371] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:11:19,371] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:11:19,371] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:11:19,371] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:11:19,371] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:11:19,371] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,371] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:11:19,371] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:11:19,376] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:11:19,376] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,376] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:11:19,378] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:11:19,378] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:11:19,398] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:11:19,398] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:11:19,398] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:11:19,398] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:11:19,398] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:11:19,398] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,398] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:11:19,398] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:11:19,398] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:11:19,398] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,398] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:11:19,405] {DEBUG} objects: #70 - Checking if new database file exists...
+[2023-04-25 15:11:19,406] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:11:19,406] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:11:19,435] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:11:19,435] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:11:19,435] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:11:19,435] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:11:19,435] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:11:19,435] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,435] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:11:19,435] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:11:19,435] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:11:19,435] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,435] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:11:19,445] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:11:19,445] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:11:19,494] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:11:19,494] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:11:19,494] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:11:19,497] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:11:19,498] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:11:19,498] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,498] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:11:19,498] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:11:19,498] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:11:19,498] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,498] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:11:19,531] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:11:19,531] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:11:19,568] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:11:19,568] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:11:19,568] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:11:19,568] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:11:19,569] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:11:19,569] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,569] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:11:19,569] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:11:19,569] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:11:19,569] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,569] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:11:19,571] {DEBUG} objects: #70 - Checking if original database file exists...
+[2023-04-25 15:11:19,571] {INFO} check_functions: #177 - Original database file successfully found.
+[2023-04-25 15:11:19,571] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode.db.
+[2023-04-25 15:11:19,572] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students
+[2023-04-25 15:11:19,605] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:11:19,605] {INFO} check_functions: #65 - Number of columns: 9
+[2023-04-25 15:11:19,605] {INFO} check_functions: #66 - Table has columns: uuid, name, dob, sex, contact_info, job_id, num_course_taken, current_career_path_id, time_spent_hrs
+[2023-04-25 15:11:19,605] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses
+[2023-04-25 15:11:19,607] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:11:19,607] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,607] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:11:19,607] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs
+[2023-04-25 15:11:19,609] {INFO} check_functions: #64 - Number of rows: 13
+[2023-04-25 15:11:19,609] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,609] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:11:19,609] {DEBUG} objects: #70 - Checking if new database file exists...
+[2023-04-25 15:11:19,609] {INFO} check_functions: #177 - New database file successfully found.
+[2023-04-25 15:11:19,609] {DEBUG} check_functions: #96 - Retrieving data from database saved in: ./subscriber-pipeline-starter-kit/dev/cademycode_updated.db.
+[2023-04-25 15:11:19,609] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_students_new
+[2023-04-25 15:11:19,632] {INFO} check_functions: #64 - Number of rows: 5000
+[2023-04-25 15:11:19,632] {INFO} check_functions: #65 - Number of columns: 11
+[2023-04-25 15:11:19,632] {INFO} check_functions: #66 - Table has columns: uuid, name, date_of_birth, sex, job_id, num_course_taken, career_path_id, time_spent_hrs, address, email, state
+[2023-04-25 15:11:19,632] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_courses_new
+[2023-04-25 15:11:19,632] {INFO} check_functions: #64 - Number of rows: 11
+[2023-04-25 15:11:19,632] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,632] {INFO} check_functions: #66 - Table has columns: career_path_id, career_path_name, hours_to_complete
+[2023-04-25 15:11:19,632] {DEBUG} check_functions: #100 - Getting information report for table named as cademycode_student_jobs_new
+[2023-04-25 15:11:19,632] {INFO} check_functions: #64 - Number of rows: 10
+[2023-04-25 15:11:19,632] {INFO} check_functions: #65 - Number of columns: 3
+[2023-04-25 15:11:19,632] {INFO} check_functions: #66 - Table has columns: job_id, job_category, avg_salary
+[2023-04-25 15:11:19,632] {DEBUG} check_functions: #87 - Checking for database updates...
+[2023-04-25 15:11:19,632] {INFO} check_functions: #155 - Updates made in the original database have been checked.

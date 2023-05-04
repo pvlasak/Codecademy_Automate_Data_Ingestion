@@ -140,10 +140,10 @@ class FinalCSVReader:
         reader = csv.reader(self.opened_file, delimiter=',')
         csv_tuple = namedtuple("csv_tuple", next(reader)[1:])
         self.mapper = map(lambda line: csv_tuple(int(line[1]), str(line[2]), str(line[3]),
-                                            str(line[4]), int(line[5]), float(line[6]),
-                                            str(line[7]), str(line[8]), str(line[9]),
-                                            str(line[10]), int(line[11]), str(line[12]),
-                                            int(line[13])), reader)
+                                                 str(line[4]), int(line[5]), float(line[6]),
+                                                 str(line[7]), str(line[8]), str(line[9]),
+                                                 str(line[10]), int(line[11]), str(line[12]),
+                                                 int(line[13])), reader)
         return self.mapper
 
     def __exit__(self, *exc):

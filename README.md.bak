@@ -60,6 +60,7 @@ Database update can be initialized in terminal by starting the command: \
 "python3 ./automated_data_ingestion.py"
 
 Update process can be tracked in files `changes.log` and `check_errors.log` \
+
 Output files are following:\
 	a] "./subscriber-pipeline-starter-kit/dev/cademycode_updated.db"\
 		clean database \
